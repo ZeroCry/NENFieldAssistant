@@ -11,19 +11,18 @@ public class Asset implements Serializable {
     private String mAssetNumber;
     private String mCategory;
     private String mMachineType;
-    private String mLocation;
 
-/*    public Asset() {
+    public Asset() {
 
     }
-*/
+/*
     public Asset(String assetnumber, String category, String machinetype, String location) {
         this.mAssetNumber = assetnumber;
         this.mCategory = category;
         this.mMachineType = machinetype;
         this.mLocation = location;
     }
-
+*/
     public long getId() {
         return mId;
     }
@@ -56,12 +55,7 @@ public class Asset implements Serializable {
         this.mMachineType = mMachineType;
     }
 
-    public String getLocation() {
-        return mLocation;
-    }
+    public void setLocation() {
 
-    public void setLocation(String mLocation) {
-        this.mLocation = mLocation;
     }
-
 }

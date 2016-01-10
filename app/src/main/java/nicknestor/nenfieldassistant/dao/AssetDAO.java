@@ -111,8 +111,8 @@ public class AssetDAO {
     }
 
     private Asset cursorToAsset(Cursor cursor) {
-        Asset asset = new Asset(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4));
-/*        asset.setId(cursor.getLong(0));
+        Asset asset = new Asset();
+        asset.setId(cursor.getLong(0));
         asset.setAssetNumber(cursor.getString(1));
         asset.setCategory(cursor.getString(2));
         asset.setMachineType(cursor.getString(3));
@@ -123,8 +123,8 @@ public class AssetDAO {
         LocationDAO dao = new LocationDAO(mContext);
         Location location = dao.getLocationById(locationId);
         if (location != null)
-            asset.setLocation(location);
-*/
+            asset.setLocation();
+
         return asset;
     }
 
