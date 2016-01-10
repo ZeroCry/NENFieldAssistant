@@ -1,9 +1,6 @@
 package nicknestor.nenfieldassistant.dao;
 
 
-/**
- * Created by Nick on 12/18/2015.
- */
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -30,10 +30,10 @@ import nicknestor.nenfieldassistant.model.Asset;
 
 public class ListAssetsActivity extends Activity implements OnItemLongClickListener, OnItemClickListener, OnClickListener {
 
-    public static final String TAG = "ListAssetsActivity";
+    private static final String TAG = "ListAssetsActivity";
 
-    public static final int REQUEST_CODE_ADD_ASSET = 40;
-    public static final String EXTRA_ADDED_ASSET = "extra_key_added_asset";
+    private static final int REQUEST_CODE_ADD_ASSET = 40;
+    private static final String EXTRA_ADDED_ASSET = "extra_key_added_asset";
     public static final String EXTRA_SELECTED_LOCATION_ID = "extra_key_selected_location_id";
 
     private ListView mListviewAssets;
@@ -47,7 +47,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
     private long mLocationId = -1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_assets);
 
@@ -55,22 +55,22 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
         initViews();
 
         // get the location id from extras
-        mAssetDao = new AssetDAO(this);
+        this.mAssetDao = new AssetDAO(this);
         Intent intent  = getIntent();
         if(intent != null) {
             this.mLocationId = intent.getLongExtra(EXTRA_SELECTED_LOCATION_ID, -1);
         }
 
         if(mLocationId != -1) {
-            mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
+            this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
             // fill the listView
             if(mListAssets != null && !mListAssets.isEmpty()) {
-                mAdapter = new ListAssetsAdapter(this, mListAssets);
-                mListviewAssets.setAdapter(mAdapter);
+                this.mAdapter = new ListAssetsAdapter(this, mListAssets);
+                this.mListviewAssets.setAdapter(mAdapter);
             }
             else {
-                mTxtEmptyListAssets.setVisibility(View.VISIBLE);
-                mListviewAssets.setVisibility(View.GONE);
+                this.mTxtEmptyListAssets.setVisibility(View.VISIBLE);
+                this.mListviewAssets.setVisibility(View.GONE);
             }
         }
     }
@@ -98,28 +98,28 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_CODE_ADD_ASSET) {
             if(resultCode == RESULT_OK) {
                 //refresh the listView
                 if(mListAssets == null || !mListAssets.isEmpty()) {
-                    mListAssets = new ArrayList<Asset>();
+                    this.mListAssets = new ArrayList<Asset>();
                 }
 
                 if(mAssetDao == null)
-                    mAssetDao = new AssetDAO(this);
-                mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
+                    this.mAssetDao = new AssetDAO(this);
+                this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
                 if(mAdapter == null) {
-                    mAdapter = new ListAssetsAdapter(this, mListAssets);
-                    mListviewAssets.setAdapter(mAdapter);
+                    this.mAdapter = new ListAssetsAdapter(this, mListAssets);
+                    this.mListviewAssets.setAdapter(mAdapter);
                     if(mListviewAssets.getVisibility() != View.VISIBLE) {
-                        mTxtEmptyListAssets.setVisibility(View.GONE);
-                        mListviewAssets.setVisibility(View.VISIBLE);
+                        this.mTxtEmptyListAssets.setVisibility(View.GONE);
+                        this.mListviewAssets.setVisibility(View.VISIBLE);
                     }
                 }
                 else {
-                    mAdapter.setItems(mListAssets);
-                    mAdapter.notifyDataSetChanged();
+                    this.mAdapter.setItems(mListAssets);
+                    this.mAdapter.notifyDataSetChanged();
                 }
             }
         }
@@ -128,9 +128,9 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
-        mAssetDao.close();
+        this.mAssetDao.close();
     }
 
     @Override

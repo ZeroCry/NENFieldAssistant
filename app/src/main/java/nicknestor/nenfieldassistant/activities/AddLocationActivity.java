@@ -33,7 +33,7 @@ public class AddLocationActivity extends Activity implements OnClickListener {
         this.mAddLocation_State = (EditText) findViewById(R.id.AddLocation_State);
         this.mAddLocation_Zip = (EditText) findViewById(R.id.AddLocation_Zip);
         this.mAddLocation_PhoneNumber = (EditText) findViewById(R.id.AddLocation_PhoneNumber);
-        this.mBtn_Add_Location = (Button) findViewById(R.id.Btn_Add_Location);
+        this.mBtn_Add_Location = (Button) findViewById(R.id.btn_add_location);
 
         this.mBtn_Add_Location.setOnClickListener(this);
     }
@@ -41,16 +41,16 @@ public class AddLocationActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.Btn_Add_Location:
-                Editable StoreName = mAddLocation_StoreName.getText();
-                Editable StoreAbbr = mAddLocation_StoreAbbr.getText();
-                Editable StoreNumber = mAddLocation_StoreId.getText();
-                Editable Address = mAddLocation_Address.getText();
-                Editable City = mAddLocation_City.getText();
-                Editable State = mAddLocation_State.getText();
-                Editable Zip = mAddLocation_Zip.getText();
-                Editable PhoneNumber = mAddLocation_PhoneNumber.getText();
-                if (!TextUtils.isEmpty(StoreName) && !TextUtils.isEmpty(StoreNumber)) {
+            case R.id.btn_add_location:
+                Editable StoreName = this.mAddLocation_StoreName.getText();
+                Editable StoreAbbr = this.mAddLocation_StoreAbbr.getText();
+                Editable StoreId = this.mAddLocation_StoreId.getText();
+                Editable Address = this.mAddLocation_Address.getText();
+                Editable City = this.mAddLocation_City.getText();
+                Editable State = this.mAddLocation_State.getText();
+                Editable Zip = this.mAddLocation_Zip.getText();
+                Editable PhoneNumber = this.mAddLocation_PhoneNumber.getText();
+                if (!TextUtils.isEmpty(StoreName) && !TextUtils.isEmpty(StoreId)) {
 
                 }
         }

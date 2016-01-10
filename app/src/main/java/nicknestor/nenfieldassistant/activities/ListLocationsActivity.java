@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,15 +27,12 @@ import nicknestor.nenfieldassistant.model.Location;
 
 
 
-/**
- * Created by Nick on 12/19/2015.
- */
 public class ListLocationsActivity extends Activity implements OnItemLongClickListener, OnItemClickListener, OnClickListener {
 
-    public static final String TAG = "ListLocationsActivity";
+    private static final String TAG = "ListLocationsActivity";
 
-    public static final int REQUEST_CODE_ADD_Location = 40;
-    public static final String EXTRA_ADDED_Location = "extra_key_added_Location";
+    private static final int REQUEST_CODE_ADD_LOCATION = 40;
+    private static final String EXTRA_ADDED_Location = "extra_key_added_Location";
 
     private ListView mListviewLocations;
     private TextView mTxtEmptyListLocations;
@@ -45,7 +43,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     private LocationDAO mLocationDao;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_location);
 
@@ -53,22 +51,22 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
         initViews();
 
         // fill the listView
-        mLocationDao = new LocationDAO(this);
-        mListLocations = mLocationDao.getAllLocations();
+        this.mLocationDao = new LocationDAO(this);
+        this.mListLocations = mLocationDao.getAllLocations();
         if(mListLocations != null && !mListLocations.isEmpty()) {
-            mAdapter = new ListLocationsAdapter(this, mListLocations);
-            mListviewLocations.setAdapter(mAdapter);
+            this.mAdapter = new ListLocationsAdapter(this, mListLocations);
+            this.mListviewLocations.setAdapter(mAdapter);
         }
         else {
-            mTxtEmptyListLocations.setVisibility(View.VISIBLE);
-            mListviewLocations.setVisibility(View.GONE);
+            this.mTxtEmptyListLocations.setVisibility(View.VISIBLE);
+            this.mListviewLocations.setVisibility(View.GONE);
         }
     }
 
     private void initViews() {
         this.mListviewLocations = (ListView) findViewById(R.id.list_locations);
         this.mTxtEmptyListLocations = (TextView) findViewById(R.id.txt_empty_list_Locations);
-        this.mBtnAddLocation = (ImageButton) findViewById(R.id.Btn_Add_Location);
+        this.mBtnAddLocation = (ImageButton) findViewById(R.id.btn_add_location);
         this.mListviewLocations.setOnItemClickListener(this);
         this.mListviewLocations.setOnItemLongClickListener(this);
         this.mBtnAddLocation.setOnClickListener(this);
@@ -77,9 +75,9 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.Btn_Add_Location:
+            case R.id.btn_add_location:
                 Intent intent = new Intent(this, AddLocationActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_ADD_Location);
+                startActivityForResult(intent, REQUEST_CODE_ADD_LOCATION);
                 break;
 
             default:
@@ -88,29 +86,29 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_CODE_ADD_Location) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQUEST_CODE_ADD_LOCATION) {
             if(resultCode == RESULT_OK) {
                 // add the added Location to the listLocations and refresh the listView
                 if(data != null) {
                     Location createdLocation = (Location) data.getSerializableExtra(EXTRA_ADDED_Location);
                     if(createdLocation != null) {
-                        if(mListLocations == null)
-                            mListLocations = new ArrayList<Location>();
-                        mListLocations.add(createdLocation);
+                        if(this.mListLocations == null)
+                            this.mListLocations = new ArrayList<Location>();
+                        this.mListLocations.add(createdLocation);
 
                         if(mAdapter == null) {
                             if(mListviewLocations.getVisibility() != View.VISIBLE) {
-                                mListviewLocations.setVisibility(View.VISIBLE);
-                                mTxtEmptyListLocations.setVisibility(View.GONE);
+                                this.mListviewLocations.setVisibility(View.VISIBLE);
+                                this.mTxtEmptyListLocations.setVisibility(View.GONE);
                             }
 
-                            mAdapter = new ListLocationsAdapter(this, mListLocations);
-                            mListviewLocations.setAdapter(mAdapter);
+                            this.mAdapter = new ListLocationsAdapter(this, mListLocations);
+                            this.mListviewLocations.setAdapter(mAdapter);
                         }
                         else {
-                            mAdapter.setItems(mListLocations);
-                            mAdapter.notifyDataSetChanged();
+                            this.mAdapter.setItems(mListLocations);
+                            this.mAdapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -121,9 +119,9 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
-        mLocationDao.close();
+        this.mLocationDao.close();
     }
 
     @Override
@@ -131,7 +129,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
         Location clickedLocation = mAdapter.getItem(position);
         Log.d(TAG, "clickedItem : " + clickedLocation.getStore());
         Intent intent = new Intent(this, ListAssetsActivity.class);
- //       intent.putExtra(ListAssetsActivity.EXTRA_SELECTED_LOCATIONS_ID, clickedLocation.getId());
+        intent.putExtra(ListAssetsActivity.EXTRA_SELECTED_LOCATION_ID, clickedLocation.getId());
         startActivity(intent);
     }
 
@@ -147,7 +145,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         alertDialogBuilder.setTitle("Delete");
-        alertDialogBuilder.setMessage("Are you sure you want to delete the \""+clickedLocation.getStore()+"\" Location ?");
+        alertDialogBuilder.setMessage("Are you sure you want to delete the \""+clickedLocation.getStore()+"\" location ?");
 
         // set positive button YES message
         alertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

@@ -1,26 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".activities.AddLocation">
+    android:layout_margin="8dp"
+    tools:context="${relativePackage}.${activityClass}" >
 
-    <android.support.design.widget.AppBarLayout
+    <EditText
+        android:id="@+id/txt_company_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:hint="@string/company_name"
+        android:layout_marginTop="24dp"
+        android:inputType="text"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-    </android.support.design.widget.AppBarLayout>
+    <EditText
+        android:id="@+id/txt_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_company_name"
+        android:layout_marginTop="8dp"
+        android:hint="@string/address"
+        android:inputType="text"
+        android:lines="2"
+        android:maxLines="2"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
 
-    <include layout="@layout/content_add_location" />
+    <EditText
+        android:id="@+id/txt_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_address"
+        android:layout_marginTop="8dp"
+        android:hint="@string/website"
+        android:inputType="text"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
 
+    <EditText
+        android:id="@+id/txt_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_website"
+        android:layout_marginTop="8dp"
+        android:hint="@string/phone_number"
+        android:inputType="phone"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/btn_add_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_phone_number"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="2dp"
+        android:text="@string/add"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
