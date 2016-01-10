@@ -32,7 +32,7 @@ public class LocationDAO {
             DatabaseHandler.CLASS_LOCATIONS.Locations_phone};
     public LocationDAO(Context context) {
         this.mContext = context;
-        mDatabaseHandler = new DatabaseHandler(context);
+        this.mDatabaseHandler = new DatabaseHandler(context);
         try {
             open();
         } catch (SQLException e) {

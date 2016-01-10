@@ -20,6 +20,7 @@ public class Location implements Serializable {
     private String mZip;
     private String mPhone;
 
+    public Location(){};
 
     public Location(String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
         this.mStore = store;

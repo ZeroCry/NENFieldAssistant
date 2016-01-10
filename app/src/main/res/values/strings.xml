@@ -41,6 +41,8 @@
     <string name="machinetype">Machine Type</string>
 
     <string name="select_a_location">Select a Location</string>
+    <string name="add_new_location">add new Location</string>
+    <string name="add_new_asset">add new asset</string>
 
 
 </resources>
