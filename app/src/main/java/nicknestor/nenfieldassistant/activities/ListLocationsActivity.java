@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,11 +31,11 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     private static final String TAG = "ListLocationsActivity";
 
     private static final int REQUEST_CODE_ADD_LOCATION = 40;
-    private static final String EXTRA_ADDED_Location = "extra_key_added_Location";
+    public static final String EXTRA_ADDED_LOCATION = "extra_key_added_Location";
 
     private ListView mListviewLocations;
     private TextView mTxtEmptyListLocations;
-    private ImageButton mBtnAddLocation;
+    private Button mBtnAddLocation;
 
     private ListLocationsAdapter mAdapter;
     private List<Location> mListLocations;
@@ -66,7 +65,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     private void initViews() {
         this.mListviewLocations = (ListView) findViewById(R.id.list_locations);
         this.mTxtEmptyListLocations = (TextView) findViewById(R.id.txt_empty_list_Locations);
-        this.mBtnAddLocation = (ImageButton) findViewById(R.id.btn_add_location);
+        this.mBtnAddLocation = (Button) findViewById(R.id.btn_add_location);
         this.mListviewLocations.setOnItemClickListener(this);
         this.mListviewLocations.setOnItemLongClickListener(this);
         this.mBtnAddLocation.setOnClickListener(this);
@@ -91,7 +90,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
             if(resultCode == RESULT_OK) {
                 // add the added Location to the listLocations and refresh the listView
                 if(data != null) {
-                    Location createdLocation = (Location) data.getSerializableExtra(EXTRA_ADDED_Location);
+                    Location createdLocation = (Location) data.getSerializableExtra(EXTRA_ADDED_LOCATION);
                     if(createdLocation != null) {
                         if(this.mListLocations == null)
                             this.mListLocations = new ArrayList<Location>();

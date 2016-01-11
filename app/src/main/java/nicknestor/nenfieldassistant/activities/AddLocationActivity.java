@@ -1,19 +1,28 @@
 package nicknestor.nenfieldassistant.activities;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import nicknestor.nenfieldassistant.R;
+import nicknestor.nenfieldassistant.dao.LocationDAO;
+import nicknestor.nenfieldassistant.model.Location;
+import nicknestor.nenfieldassistant.activities.ListLocationsActivity;
 
-/**
- * Created by Nick on 12/18/2015.
- */
+
 public class AddLocationActivity extends Activity implements OnClickListener {
+
+
+    public static final String TAG = "AddLocationActivity";
+
     private EditText mAddLocation_StoreName;
     private EditText mAddLocation_StoreAbbr;
     private EditText mAddLocation_StoreId;
@@ -24,7 +33,19 @@ public class AddLocationActivity extends Activity implements OnClickListener {
     private EditText mAddLocation_PhoneNumber;
     private Button mBtn_Add_Location;
 
-    private void initView() {
+    private LocationDAO mLocationDao;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_location);
+
+        initViews();
+
+        this.mLocationDao = new LocationDAO(this);
+    }
+
+    private void initViews() {
         this.mAddLocation_StoreName = (EditText) findViewById(R.id.AddLocation_StoreName);
         this.mAddLocation_StoreAbbr = (EditText) findViewById(R.id.AddLocation_StoreAbbr);
         this.mAddLocation_StoreId = (EditText) findViewById(R.id.AddLocation_StoreId);
@@ -51,9 +72,32 @@ public class AddLocationActivity extends Activity implements OnClickListener {
                 Editable Zip = this.mAddLocation_Zip.getText();
                 Editable PhoneNumber = this.mAddLocation_PhoneNumber.getText();
                 if (!TextUtils.isEmpty(StoreName) && !TextUtils.isEmpty(StoreId)) {
+                    Location createdLocation = mLocationDao.createLocation(
+                            StoreName.toString(), StoreAbbr.toString(),
+                            StoreId.toString(), Address.toString(),
+                            City.toString(), State.toString(),
+                            Zip.toString(), PhoneNumber.toString());
 
+                    Log.d(TAG, "added company : " + createdLocation.getStore());
+                    Intent intent = new Intent();
+                    intent.putExtra(ListLocationsActivity.EXTRA_ADDED_LOCATION, createdLocation);
+                    setResult(RESULT_OK, intent);
+                    finish();
                 }
-        }
+                else {
+                    Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
+                }
+                break;
 
+            default:
+                break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLocationDao.close();
+    }
 }
+

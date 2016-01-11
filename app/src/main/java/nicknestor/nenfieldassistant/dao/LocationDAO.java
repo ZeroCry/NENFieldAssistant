@@ -47,7 +47,7 @@ public class LocationDAO {
 
     public void close() { mDatabaseHandler.close(); }
 
-    public Location createLocation (String store, String abbr, Integer storeID, String address, String city, String state, Integer zip, Integer phone) {
+    public Location createLocation (String store, String abbr, String storeID, String address, String city, String state, String zip, String phone) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_store, store);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_abbr, abbr);
