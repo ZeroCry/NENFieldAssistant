@@ -20,8 +20,8 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
     private List<Location> mItems;
     private LayoutInflater mInflater;
 
-    public SpinnerLocationsAdapter(Context context, List<Location> listCompanies) {
-        this.setItems(listCompanies);
+    public SpinnerLocationsAdapter(Context context, List<Location> listLocations) {
+        this.setItems(listLocations);
         this.mInflater = LayoutInflater.from(context);
     }
 

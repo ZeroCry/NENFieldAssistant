@@ -109,7 +109,7 @@ public class LocationDAO {
     }
     public void deleteLocation(Location location) {
         long id = location.getId();
-        // delete all employees of this company
+        // delete all assets of this location
         AssetDAO assetDao = new AssetDAO(mContext);
         List<Asset> listAssets = assetDao.getAssetsOfLocation(id);
         if (listAssets != null && !listAssets.isEmpty()) {

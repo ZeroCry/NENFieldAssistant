@@ -44,21 +44,21 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_location);
+        setContentView(R.layout.activity_list_locations);
 
         // initialize views
         initViews();
 
         // fill the listView
-        this.mLocationDao = new LocationDAO(this);
-        this.mListLocations = mLocationDao.getAllLocations();
+        mLocationDao = new LocationDAO(this);
+        mListLocations = mLocationDao.getAllLocations();
         if(mListLocations != null && !mListLocations.isEmpty()) {
-            this.mAdapter = new ListLocationsAdapter(this, mListLocations);
-            this.mListviewLocations.setAdapter(mAdapter);
+            mAdapter = new ListLocationsAdapter(this, mListLocations);
+            mListviewLocations.setAdapter(mAdapter);
         }
         else {
-            this.mTxtEmptyListLocations.setVisibility(View.VISIBLE);
-            this.mListviewLocations.setVisibility(View.GONE);
+            mTxtEmptyListLocations.setVisibility(View.VISIBLE);
+            mListviewLocations.setVisibility(View.GONE);
         }
     }
 
@@ -92,22 +92,22 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
                 if(data != null) {
                     Location createdLocation = (Location) data.getSerializableExtra(EXTRA_ADDED_LOCATION);
                     if(createdLocation != null) {
-                        if(this.mListLocations == null)
-                            this.mListLocations = new ArrayList<Location>();
-                        this.mListLocations.add(createdLocation);
+                        if(mListLocations == null)
+                            mListLocations = new ArrayList<Location>();
+                        mListLocations.add(createdLocation);
 
                         if(mAdapter == null) {
                             if(mListviewLocations.getVisibility() != View.VISIBLE) {
-                                this.mListviewLocations.setVisibility(View.VISIBLE);
-                                this.mTxtEmptyListLocations.setVisibility(View.GONE);
+                                mListviewLocations.setVisibility(View.VISIBLE);
+                                mTxtEmptyListLocations.setVisibility(View.GONE);
                             }
 
-                            this.mAdapter = new ListLocationsAdapter(this, mListLocations);
-                            this.mListviewLocations.setAdapter(mAdapter);
+                            mAdapter = new ListLocationsAdapter(this, mListLocations);
+                            mListviewLocations.setAdapter(mAdapter);
                         }
                         else {
-                            this.mAdapter.setItems(mListLocations);
-                            this.mAdapter.notifyDataSetChanged();
+                            mAdapter.setItems(mListLocations);
+                            mAdapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -120,7 +120,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.mLocationDao.close();
+        mLocationDao.close();
     }
 
     @Override
