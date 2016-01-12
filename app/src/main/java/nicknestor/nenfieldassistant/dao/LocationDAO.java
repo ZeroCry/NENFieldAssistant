@@ -60,13 +60,28 @@ public class LocationDAO {
         long insertId = mDatabase
                 .insert(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, null, values);
         Cursor cursor =mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
-                DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = " + insertId, null,null,null,null);
+                DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = " + insertId, null, null, null, null, null);
         cursor.moveToFirst();
         Location newLocation = cursorToLocation(cursor);
         cursor.close();
         return newLocation;
     }
 
+    public void deleteLocation(Location location) {
+        long id = location.getId();
+        // delete all assets of this location
+        AssetDAO assetDao = new AssetDAO(mContext);
+        List<Asset> listAssets = assetDao.getAssetsOfLocation(id);
+        if (listAssets != null && !listAssets.isEmpty()) {
+            for (Asset e : listAssets) {
+                assetDao.deleteAsset(e);
+            }
+        }
+
+        System.out.println("the deleted location has the id: " + id);
+        mDatabase.delete(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, DatabaseHandler.CLASS_LOCATIONS.Locations_id
+                + " = " + id, null);
+    }
 
     public List<Location> getAllLocations() {
         List<Location> listLocations = new ArrayList<Location>();
@@ -107,19 +122,5 @@ public class LocationDAO {
         location.setPhone(cursor.getString(8));
         return location;
     }
-    public void deleteLocation(Location location) {
-        long id = location.getId();
-        // delete all assets of this location
-        AssetDAO assetDao = new AssetDAO(mContext);
-        List<Asset> listAssets = assetDao.getAssetsOfLocation(id);
-        if (listAssets != null && !listAssets.isEmpty()) {
-            for (Asset e : listAssets) {
-                assetDao.deleteAsset(e);
-            }
-        }
 
-        System.out.println("the deleted location has the id: " + id);
-        mDatabase.delete(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, DatabaseHandler.CLASS_LOCATIONS.Locations_id
-                + " = " + id, null);
-    }
 }
