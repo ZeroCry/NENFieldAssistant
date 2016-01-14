@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/txt_storename"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -17,30 +17,27 @@
 
     <TextView
         android:id="@+id/txt_storeabbr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/txt_storename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:maxLines="2"
         android:text="@string/storeabbr"
-        android:textAppearance="?android:attr/textAppearance"
         android:textColor="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/txt_storeid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/txt_storeabbr"
-        android:layout_marginTop="4dp"
-        android:linksClickable="false"
         android:text="@string/storeid"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="@android:color/darker_gray"
+        android:layout_alignTop="@+id/txt_storeabbr"
+        android:layout_toEndOf="@+id/txt_storeabbr" />
 
     <TextView
         android:id="@+id/txt_address"
+        android:layout_below="@+id/txt_storeabbr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_storeabbr"
         android:layout_marginTop="4dp"
         android:linksClickable="false"
         android:text="@string/address"
@@ -48,40 +45,19 @@
 
     <TextView
         android:id="@+id/txt_city"
+        android:layout_below="@+id/txt_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_address"
         android:layout_marginTop="4dp"
         android:linksClickable="false"
         android:text="@string/city"
         android:textColor="@android:color/darker_gray" />
 
     <TextView
-        android:id="@+id/txt_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:linksClickable="false"
-        android:text="@string/state"
-        android:textColor="@android:color/darker_gray"
-        android:layout_above="@+id/txt_phone_number"
-        android:layout_alignEnd="@+id/txt_phone_number" />
-
-    <TextView
-        android:id="@+id/txt_zip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:linksClickable="false"
-        android:text="@string/zip"
-        android:textColor="@android:color/darker_gray"
-        android:layout_alignTop="@+id/txt_state"
-        android:layout_toEndOf="@+id/txt_state"
-        android:layout_marginStart="43dp" />
-
-    <TextView
         android:id="@+id/txt_phone_number"
+        android:layout_below="@+id/txt_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_city"
         android:layout_marginTop="4dp"
         android:autoLink="phone"
         android:linksClickable="false"

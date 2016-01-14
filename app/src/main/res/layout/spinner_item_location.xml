@@ -5,25 +5,31 @@
     android:layout_margin="8dp" >
 
     <TextView
-        android:id="@+id/txt_location_name"
+        android:id="@+id/txt_spinner_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="@string/company_name"
+        android:text="@string/StoreName"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/txt_Address"
+        android:id="@+id/txt_spinner_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_location_name"
+        android:layout_below="@+id/txt_spinner_location"
         android:layout_marginTop="4dp"
-        android:autoLink="web"
-        android:linksClickable="false"
         android:text="@string/address"
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/txt_spinner_citystatezip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_spinner_address"
+        android:layout_marginTop="4dp"
+        android:text="@string/citystatezip"
         android:textColor="@android:color/darker_gray" />
 
 </RelativeLayout>

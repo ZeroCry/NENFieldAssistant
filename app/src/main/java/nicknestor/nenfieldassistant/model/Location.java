@@ -20,9 +20,10 @@ public class Location implements Serializable {
     private String mZip;
     private String mPhone;
 
-    public Location(){};
+    //public Location(){};
 
-    public Location(String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
+    public Location(Long location_id, String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
+        this.mId = location_id;
         this.mStore = store;
         this.mAbbr = abbr;
         this.mStoreNumber = storeNumber;
@@ -36,20 +37,28 @@ public class Location implements Serializable {
 
     public long getId() {return mId;}
     public void setId(long mId) {this.mId = mId;}
+
     public String getStore() { return mStore;}
     public void setStore(String mStore) {this.mStore = mStore;}
+
     public String getAbbr() {return mAbbr;}
     public void setAbbr(String mAbbr) {this.mAbbr = mAbbr;}
-    public String getStoreNumber() {return mStoreNumber;}
+
+    public String getStoreID() {return mStoreNumber;}
     public void setStoreNumber(String mStoreNumber) {this.mStoreNumber = mStoreNumber;}
+
     public String getAddress() {return mAddress;}
     public void setAddress(String mAddress) {this.mAddress = mAddress;}
+
     public String getCity() {return mCity;}
     public void setCity(String mCity) {this.mCity = mCity;}
+
     public String getState() {return mState;}
     public void setState(String mState) {this.mState = mState;}
+
     public String getZip() {return mZip;}
     public void setZip(String mZip) {this.mZip = mZip;}
+
     public String getPhone() {return mPhone;}
     public void setPhone(String mPhone) {this.mPhone = mPhone;}
 

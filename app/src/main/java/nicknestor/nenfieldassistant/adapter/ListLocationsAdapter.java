@@ -23,8 +23,8 @@ public class ListLocationsAdapter extends BaseAdapter {
     private List<Location> mItems;
     private LayoutInflater mInflater;
 
-    public ListLocationsAdapter(Context context, List<Location> listCompanies) {
-        this.setItems(listCompanies);
+    public ListLocationsAdapter(Context context, List<Location> listLocations) {
+        this.setItems(listLocations);
         this.mInflater = LayoutInflater.from(context);
     }
 
@@ -50,14 +50,12 @@ public class ListLocationsAdapter extends BaseAdapter {
         if(v == null) {
             v = mInflater.inflate(R.layout.list_item_location, parent, false);
             holder = new ViewHolder();
-            holder.txtStoreName = (TextView) v.findViewById(R.id.AddLocation_StoreName);
-            holder.txtStoreAbbr = (TextView) v.findViewById(R.id.AddLocation_StoreAbbr);
-            holder.txtStoreNumber = (TextView) v.findViewById(R.id.AddLocation_StoreId);
-            holder.txtAddress = (TextView) v.findViewById(R.id.AddLocation_Address);
-            holder.txtCity = (TextView) v.findViewById(R.id.AddLocation_City);
-            holder.txtState = (TextView) v.findViewById(R.id.AddLocation_State);
-            holder.txtZip = (TextView) v.findViewById(R.id.AddLocation_Zip);
-            holder.txtPhone = (TextView) v.findViewById(R.id.AddLocation_PhoneNumber);
+            holder.txtStoreName = (TextView) v.findViewById(R.id.txt_storename);
+            holder.txtStoreAbbr = (TextView) v.findViewById(R.id.txt_storeabbr);
+            holder.txtStoreNumber = (TextView) v.findViewById(R.id.txt_storeid);
+            holder.txtAddress = (TextView) v.findViewById(R.id.txt_address);
+            holder.txtCity = (TextView) v.findViewById(R.id.txt_city);
+            holder.txtPhone = (TextView) v.findViewById(R.id.txt_phone_number);
             v.setTag(holder);
         }
         else {
@@ -67,13 +65,11 @@ public class ListLocationsAdapter extends BaseAdapter {
         // fill row data
         Location currentItem = getItem(position);
         if(currentItem != null) {
-            holder.txtStoreName.setText(currentItem.getStore());
+            holder.txtStoreName.setText(currentItem.getStore() + " #" + currentItem.getStoreID());
             holder.txtStoreAbbr.setText(currentItem.getAbbr());
-            holder.txtStoreNumber.setText(currentItem.getStoreNumber());
+            holder.txtStoreNumber.setText(currentItem.getStoreID());
             holder.txtAddress.setText(currentItem.getAddress());
-            holder.txtCity.setText(currentItem.getCity());
-            holder.txtState.setText(currentItem.getState());
-            holder.txtZip.setText(currentItem.getZip());
+            holder.txtCity.setText(currentItem.getCity() + ", " + currentItem.getState() + " " + currentItem.getZip());
             holder.txtPhone.setText(currentItem.getPhone());
         }
 
@@ -94,8 +90,6 @@ public class ListLocationsAdapter extends BaseAdapter {
         TextView txtStoreNumber;
         TextView txtAddress;
         TextView txtCity;
-        TextView txtState;
-        TextView txtZip;
         TextView txtPhone;
     }
 

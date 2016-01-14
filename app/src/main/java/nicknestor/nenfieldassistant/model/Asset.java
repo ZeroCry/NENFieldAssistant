@@ -15,14 +15,14 @@ public class Asset implements Serializable {
     public Asset() {
 
     }
-/*
-    public Asset(String assetnumber, String category, String machinetype, String location) {
+
+    public Asset(Long asset_id, String assetnumber, String category, String machinetype) {
+        this.mId = asset_id;
         this.mAssetNumber = assetnumber;
         this.mCategory = category;
         this.mMachineType = machinetype;
-        this.mLocation = location;
     }
-*/
+
     public long getId() {
         return mId;
     }
@@ -55,7 +55,4 @@ public class Asset implements Serializable {
         this.mMachineType = mMachineType;
     }
 
-    public void setLocation() {
-
-    }
 }

@@ -9,19 +9,18 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
 import nicknestor.nenfieldassistant.R;
-import nicknestor.nenfieldassistant.model.Location;
+import nicknestor.nenfieldassistant.model.Area;
 
-public class SpinnerLocationsAdapter extends BaseAdapter {
+public class SpinnerAreasAdapter extends BaseAdapter {
 
-    public static final String TAG = "SpinnerLocationsAdapter";
+    public static final String TAG = "SpinnerAreasAdapter";
 
-    private List<Location> mItems;
+    private List<Area> mItems;
     private LayoutInflater mInflater;
 
-    public SpinnerLocationsAdapter(Context context, List<Location> listLocations) {
-        this.setItems(listLocations);
+    public SpinnerAreasAdapter(Context context, List<Area> listAreas) {
+        this.setItems(listAreas);
         this.mInflater = LayoutInflater.from(context);
     }
 
@@ -31,7 +30,7 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Location getItem(int position) {
+    public Area getItem(int position) {
         return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position) : null ;
     }
 
@@ -45,11 +44,9 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
         View v = convertView;
         ViewHolder holder;
         if(v == null) {
-            v = mInflater.inflate(R.layout.spinner_item_location, parent, false);
+            v = mInflater.inflate(R.layout.spinner_item_area, parent, false);
             holder = new ViewHolder();
-            holder.txtStoreName = (TextView) v.findViewById(R.id.txt_spinner_location);
-            holder.txtAddress = (TextView) v.findViewById(R.id.txt_spinner_address);
-            holder.txtCity = (TextView) v.findViewById(R.id.txt_spinner_citystatezip);
+            holder.txtArea = (TextView) v.findViewById(R.id.txt_spinner_area);
             v.setTag(holder);
         }
         else {
@@ -57,27 +54,23 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
         }
 
         // fill row data
-        Location currentItem = getItem(position);
+        Area currentItem = getItem(position);
         if(currentItem != null) {
-            holder.txtStoreName.setText(currentItem.getStore());
-            holder.txtAddress.setText(currentItem.getAddress());
-            holder.txtCity.setText(currentItem.getCity());
+            holder.txtArea.setText(currentItem.getArea());
         }
 
         return v;
     }
 
-    public List<Location> getItems() {
+    public List<Area> getItems() {
         return mItems;
     }
 
-    public void setItems(List<Location> mItems) {
+    public void setItems(List<Area> mItems) {
         this.mItems = mItems;
     }
 
     class ViewHolder {
-        TextView txtStoreName;
-        TextView txtAddress;
-        TextView txtCity;
+        TextView txtArea;
     }
 }

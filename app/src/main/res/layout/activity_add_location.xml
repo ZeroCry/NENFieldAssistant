@@ -5,63 +5,142 @@
     android:layout_margin="8dp"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <EditText
-        android:id="@+id/txt_company_name"
-        android:layout_width="match_parent"
+    <TextView
+        android:labelFor="@+id/AddLocation_StoreName"
+        android:id="@+id/StoreName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/company_name"
-        android:layout_marginTop="24dp"
+        android:text="@string/StoreName"
+        android:layout_alignBaseline="@+id/AddLocation_StoreName"/>
+    <EditText
         android:inputType="text"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/black" />
-
-    <EditText
-        android:id="@+id/txt_address"
-        android:layout_width="match_parent"
+        android:layout_toEndOf="@+id/StoreName"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_company_name"
-        android:layout_marginTop="8dp"
-        android:hint="@string/address"
+        android:id="@+id/AddLocation_StoreName"
+        android:nextFocusDown="@+id/AddLocation_StoreAbbr"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_StoreAbbr"
+        android:layout_below="@+id/AddLocation_StoreName"
+        android:id="@+id/StoreAbbr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/storeabbr"
+        android:layout_alignBaseline="@+id/AddLocation_StoreAbbr"/>
+    <EditText
         android:inputType="text"
-        android:lines="2"
-        android:maxLines="2"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/black" />
-
-    <EditText
-        android:id="@+id/txt_website"
-        android:layout_width="match_parent"
+        android:layout_toEndOf="@+id/StoreAbbr"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_address"
-        android:layout_marginTop="8dp"
-        android:hint="@string/website"
+        android:layout_below="@+id/AddLocation_StoreName"
+        android:id="@+id/AddLocation_StoreAbbr"
+        android:nextFocusRight="@+id/AddLocation_StoreId"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_StoreId"
+        android:layout_toEndOf="@+id/AddLocation_StoreAbbr"
+        android:id="@+id/storeid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/storeid"
+        android:layout_alignBaseline="@+id/AddLocation_StoreId"/>
+    <EditText
+        android:inputType="number"
+        android:layout_toEndOf="@+id/storeid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/AddLocation_StoreAbbr"
+        android:id="@+id/AddLocation_StoreId"
+        android:nextFocusDown="@+id/AddLocation_Address"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_Address"
+        android:layout_below="@+id/storeid"
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        android:layout_alignBaseline="@+id/AddLocation_Address"/>
+    <EditText
+        android:layout_toEndOf="@+id/address"
+        android:inputType="textPostalAddress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AddLocation_StoreAbbr"
+        android:id="@+id/AddLocation_Address"
+        android:nextFocusDown="@+id/AddLocation_City"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_City"
+        android:layout_below="@+id/address"
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city"
+        android:layout_alignBaseline="@+id/AddLocation_City"/>
+    <EditText
         android:inputType="text"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/black" />
-
-    <EditText
-        android:id="@+id/txt_phone_number"
-        android:layout_width="match_parent"
+        android:maxLength="20"
+        android:layout_toEndOf="@+id/city"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_website"
-        android:layout_marginTop="8dp"
-        android:hint="@string/phone_number"
+        android:layout_below="@+id/AddLocation_Address"
+        android:id="@+id/AddLocation_City"
+        android:nextFocusRight="@+id/AddLocation_State"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_State"
+        android:layout_toEndOf="@+id/AddLocation_City"
+        android:layout_below="@+id/city"
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/state"
+        android:layout_alignBaseline="@+id/AddLocation_State"/>
+    <EditText
+        android:inputType="textAutoComplete"
+        android:maxLength="2"
+        android:layout_toEndOf="@+id/state"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AddLocation_Address"
+        android:id="@+id/AddLocation_State"
+        android:nextFocusRight="@+id/AddLocation_Zip"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_Zip"
+        android:layout_toEndOf="@+id/AddLocation_State"
+        android:id="@+id/zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zip"
+        android:layout_alignBaseline="@+id/AddLocation_Zip"/>
+    <EditText
+        android:maxLength="5"
+        android:layout_toEndOf="@+id/zip"
+        android:layout_below="@+id/AddLocation_Address"
+        android:inputType="number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddLocation_Zip"
+        android:nextFocusDown="@+id/AddLocation_PhoneNumber"/>
+    <TextView
+        android:labelFor="@+id/AddLocation_PhoneNumber"
+        android:layout_below="@+id/zip"
+        android:id="@+id/phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phonenumber"
+        android:layout_alignBaseline="@+id/AddLocation_PhoneNumber"/>
+    <EditText
+        android:layout_toEndOf="@+id/phonenumber"
         android:inputType="phone"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/black" />
-
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AddLocation_Zip"
+        android:id="@+id/AddLocation_PhoneNumber" />
     <Button
         android:id="@+id/btn_add_location"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_phone_number"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:paddingBottom="2dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="2dp"
-        android:text="@string/add"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_margin="0dp"
+        android:text="@string/save"
+        android:layout_below="@+id/AddLocation_PhoneNumber"/>
+
 
 </RelativeLayout>

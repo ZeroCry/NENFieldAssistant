@@ -27,7 +27,7 @@ public class AssetDAO {
             DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
             DatabaseHandler.CLASS_ASSETS.Assets_category,
             DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
-            DatabaseHandler.CLASS_ASSETS.Assets_assetlocation,
+            DatabaseHandler.CLASS_ASSETS.Assets_location_id,
 
     };
 
@@ -38,7 +38,7 @@ public class AssetDAO {
         try {
             open();
         } catch (SQLException e) {
-            Log.e(TAG, "SQLException on openning database " + e.getMessage());
+            Log.e(TAG, "SQLException on opening database " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -52,7 +52,7 @@ public class AssetDAO {
     }
 
     public Asset createAsset(String assetnumber, String category,
-                                  String machinetype, Long locationId) {
+                                  String machinetype, long assetlocation, long assetarea) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
@@ -60,7 +60,7 @@ public class AssetDAO {
         long insertId = mDatabase
                 .insert(DatabaseHandler.CLASS_ASSETS.Table_Assets, null, values);
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
-                DatabaseHandler.CLASS_ASSETS.Assets_assetnumber + " = " + insertId, null, null,
+                DatabaseHandler.CLASS_ASSETS.Assets_id + " = " + insertId, null, null,
                 null, null);
         cursor.moveToFirst();
         Asset newAsset = cursorToAsset(cursor);
@@ -69,16 +69,16 @@ public class AssetDAO {
     }
 
     public void deleteAsset(Asset asset) {
-        long id = asset.getId();
-        System.out.println("the deleted employee has the id: " + id);
-        mDatabase.delete(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, DatabaseHandler.CLASS_ASSETS.Assets_assetnumber
-                + " = " + id, null);
+        long asset_id = asset.getId();
+        System.out.println("the deleted employee has the id: " + asset_id);
+        mDatabase.delete(DatabaseHandler.CLASS_ASSETS.Table_Assets, DatabaseHandler.CLASS_ASSETS.Assets_id
+                + " = " + asset_id, null);
     }
 
     public List<Asset> getAllAssets() {
         List<Asset> listAssets = new ArrayList<Asset>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, mAllColumns,
+        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
                 null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -92,12 +92,12 @@ public class AssetDAO {
         return listAssets;
     }
 
-    public List<Asset> getAssetsOfLocation(long locationId) {
+    public List<Asset> getAssetsOfLocation(long location_Id) {
         List<Asset> listAssets = new ArrayList<Asset>();
 
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
-                DatabaseHandler.CLASS_ASSETS.Assets_assetnumber + " = ?",
-                new String[] { String.valueOf(locationId) }, null, null, null);
+                DatabaseHandler.CLASS_ASSETS.Assets_location_id + " = ?",
+                new String[] { String.valueOf(location_Id) }, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -116,15 +116,6 @@ public class AssetDAO {
         asset.setAssetNumber(cursor.getString(1));
         asset.setCategory(cursor.getString(2));
         asset.setMachineType(cursor.getString(3));
-
-
-        // get The Location by id
-        long locationId = cursor.getLong(4);
-        LocationDAO dao = new LocationDAO(mContext);
-        Location location = dao.getLocationById(locationId);
-        if (location != null)
-            asset.setLocation();
-
         return asset;
     }
 

@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:labelFor="@+id/input_area"
+        android:id="@+id/txt_input_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/area_of_store"
+        android:layout_alignBaseline="@+id/input_area"/>
+    <EditText
+        android:inputType="text"
+        android:layout_toEndOf="@+id/txt_input_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_area"
+        android:nextFocusDown="@+id/txt_input_area"/>
+    <Button
+        android:id="@+id/btn_add_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:text="@string/save"
+        android:layout_below="@+id/txt_input_area"/>
+
+
+</RelativeLayout>

@@ -1,20 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+<!-- Used multiple times -->
     <string name="app_name">NEN Field Assistant</string>
     <string name="action_settings">Settings</string>
     <string name="save">Save</string>
 
+
+<!-- Manifest -->
+
+
+<!-- Locations -->
     <string name="all_locations">All Locations</string>
-    <string name="all_assets">All Assets</string>
-    <string name="no_assets_working_for_this_location_add_a_new_one_by_clicking_the_add_button_on_the_top_right">no assets?</string>
-
-
     <string name="no_locations">There are no locations in the database yet.</string>
-    <string name="website">website string?</string>
-    <string name="company_name">company Name string?</string>
-    <string name="asset_deleted_successfully">Asset Deleted Successfully?</string>
-
-
-
+    <string name="Location_deleted_successfully">Location Deleted Successfully!!! WTF did you just do?</string>
     <string name="StoreName">Store Name</string>
     <string name="storeabbr">Store Abbr</string>
     <string name="storeid">Store ID#</string>
@@ -23,26 +22,29 @@
     <string name="state">State</string>
     <string name="zip">Zip</string>
     <string name="phonenumber">Phone Number</string>
-    <string name="Add_Location">Add Location</string>
-    <string name="Location_deleted_successfully">Location Deleted Successfully</string>
+    <string name="citystatezip">City State Zip</string>
+    <string name="empty_fields_message">Error: Empty Fields</string>
+    <string name="add_new_location">Add New Location</string>
 
 
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="email">email</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="salary">Salary</string>
-    <string name="add">Add</string>
-
-    <string name="empty_fields_message">empty_fields_message</string>
-
-    <string name="asset_number">AssetNumber</string>
+<!-- Asset -->
+    <string name="no_assets_working_for_this_location_add_a_new_one_by_clicking_the_add_button_on_the_top_right">no assets?</string>
+    <string name="asset_deleted_successfully">Asset Deleted Successfully!!! WTF did you just do?</string>
+    <string name="assetnumber">Asset number</string>
     <string name="category">Category</string>
-    <string name="machinetype">Machine Type</string>
-
+    <string name="machinetype">Type</string>
     <string name="select_a_location">Select a Location</string>
-    <string name="add_new_location">add new Location</string>
-    <string name="add_new_asset">add new asset</string>
+    <string name="select_an_area">Select an Area</string>
+    <string name="add">Add</string>
+    <string name="add_new_asset">Add New Asset</string>
+    <string name="all_assets">All Assets</string>
 
+
+<!-- Area -->
+    <string name="add_new_area">Add New Area</string>
+    <string name="all_areas">Add New Area</string>
+    <string name="area">Area</string>
+    <string name="input_area">Area</string>
+    <string name="area_of_store">Area of Store</string>
 
 </resources>

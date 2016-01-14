@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +35,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
 
     private ListView mListviewLocations;
     private TextView mTxtEmptyListLocations;
-    private Button mBtnAddLocation;
+    private ImageButton mBtnAddLocation;
 
     private ListLocationsAdapter mAdapter;
     private List<Location> mListLocations;
@@ -65,7 +65,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     private void initViews() {
         this.mListviewLocations = (ListView) findViewById(R.id.list_locations);
         this.mTxtEmptyListLocations = (TextView) findViewById(R.id.txt_empty_list_Locations);
-        this.mBtnAddLocation = (Button) findViewById(R.id.btn_add_location);
+        this.mBtnAddLocation = (ImageButton) findViewById(R.id.btn_add_location);
         this.mListviewLocations.setOnItemClickListener(this);
         this.mListviewLocations.setOnItemLongClickListener(this);
         this.mBtnAddLocation.setOnClickListener(this);
@@ -124,7 +124,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long location_id) {
         Location clickedLocation = mAdapter.getItem(position);
         Log.d(TAG, "clickedItem : " + clickedLocation.getStore());
         Intent intent = new Intent(this, ListAssetsActivity.class);
@@ -133,12 +133,23 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long location_id) {
+/*        //Start: convert to Edit instead of Delete
         Location clickedLocation = mAdapter.getItem(position);
-        Log.d(TAG, "longClickedItem : "+clickedLocation.getStore());
-        showDeleteDialogConfirmation(clickedLocation);
-        return true;
+        Intent intent = new Intent(this, AddLocationActivity.class);
+
+        startActivityForResult(intent, REQUEST_CODE_ADD_LOCATION);
+        mLocationDao.editLocation(clickedLocation);
+
+
+        //End: convert to Edit instead of Delete
+
+
+        //showDeleteDialogConfirmation(clickedLocation);
+*/        return true;
     }
+
+
 
     private void showDeleteDialogConfirmation(final Location clickedLocation) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="@string/asset_number"
+        android:text="@string/assetnumber"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
@@ -33,8 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_Category"
         android:layout_marginTop="4dp"
-        android:autoLink="web"
-        android:linksClickable="false"
         android:text="@string/machinetype"
         android:textColor="@android:color/darker_gray" />
 

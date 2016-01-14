@@ -27,7 +27,7 @@
         android:src="@android:drawable/ic_menu_add" />
 
     <TextView
-        android:id="@+id/txt_empty_list_Locations"
+        android:id="@+id/txt_empty_list_Areas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -39,7 +39,7 @@
         android:visibility="gone" />
 
     <ListView
-        android:id="@+id/list_locations"
+        android:id="@+id/list_areas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/txt_header"
