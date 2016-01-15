@@ -48,6 +48,8 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
             v = mInflater.inflate(R.layout.spinner_item_location, parent, false);
             holder = new ViewHolder();
             holder.txtStoreName = (TextView) v.findViewById(R.id.txt_spinner_location);
+            holder.txtStoreId = (TextView) v.findViewById(R.id.txt_spinner_storeid);
+
             holder.txtAddress = (TextView) v.findViewById(R.id.txt_spinner_address);
             holder.txtCity = (TextView) v.findViewById(R.id.txt_spinner_citystatezip);
             v.setTag(holder);
@@ -60,6 +62,7 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
         Location currentItem = getItem(position);
         if(currentItem != null) {
             holder.txtStoreName.setText(currentItem.getStore());
+            holder.txtStoreId.setText(currentItem.getStoreID());
             holder.txtAddress.setText(currentItem.getAddress());
             holder.txtCity.setText(currentItem.getCity());
         }
@@ -77,6 +80,7 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView txtStoreName;
+        TextView txtStoreId;
         TextView txtAddress;
         TextView txtCity;
     }

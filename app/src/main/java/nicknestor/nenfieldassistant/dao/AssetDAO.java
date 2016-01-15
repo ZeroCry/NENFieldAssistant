@@ -51,20 +51,19 @@ public class AssetDAO {
         mDbHelper.close();
     }
 
-    public Asset createAsset(String assetnumber, String category,
-                                  String machinetype, long assetlocation, long assetarea) {
+    public Asset createAsset(String assetnumber, Integer category,
+                             Integer machinetype, Integer assetarea) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_machinetype, machinetype);
-        long insertId = mDatabase
-                .insert(DatabaseHandler.CLASS_ASSETS.Table_Assets, null, values);
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
-                DatabaseHandler.CLASS_ASSETS.Assets_id + " = " + insertId, null, null,
-                null, null);
+        values.put(DatabaseHandler.CLASS_ASSETS.Assets_Area_id, assetarea);
+        long insertId = mDatabase.insert(DatabaseHandler.CLASS_ASSETS.Table_Assets, null, values);
+        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns, DatabaseHandler.CLASS_ASSETS.Assets_id + " = " + insertId, null, null, null, null);
         cursor.moveToFirst();
         Asset newAsset = cursorToAsset(cursor);
         cursor.close();
+
         return newAsset;
     }
 

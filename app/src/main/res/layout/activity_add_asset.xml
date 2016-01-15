@@ -15,27 +15,24 @@
         android:textAppearance="?android:attr/textAppearance"
         android:textColor="@android:color/black" />
 
-    <EditText
-        android:id="@+id/txt_category"
+    <Spinner
+        android:id="@+id/spinner_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_below="@+id/txt_assetnumber"
-        android:hint="@string/category"
-        android:inputType="text"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/black" />
+        android:prompt="@string/select_a_category"
+        android:animateLayoutChanges="true"
+        android:textColor="@android:color/black"
+        android:spinnerMode="dropdown"/>
 
-    <EditText
-        android:id="@+id/txt_machinetype"
+    <Spinner
+        android:id="@+id/spinner_machinetype"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_category"
+        android:layout_below="@+id/spinner_category"
         android:layout_marginTop="8dp"
-        android:hint="@string/machinetype"
-        android:inputType="text"
-        android:lines="2"
-        android:maxLines="2"
+        android:prompt="@string/machinetype"
         android:textAppearance="?android:attr/textAppearance"
         android:textColor="@android:color/black" />
 
@@ -43,7 +40,7 @@
         android:id="@+id/spinner_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_machinetype"
+        android:layout_below="@+id/spinner_machinetype"
         android:layout_marginTop="8dp"
         android:prompt="@string/select_a_location"
         android:animateLayoutChanges="true"

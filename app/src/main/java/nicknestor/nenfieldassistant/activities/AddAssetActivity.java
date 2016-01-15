@@ -12,18 +12,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import nicknestor.nenfieldassistant.R;
-import nicknestor.nenfieldassistant.adapter.SpinnerAreasAdapter;
 import nicknestor.nenfieldassistant.adapter.SpinnerLocationsAdapter;
 import nicknestor.nenfieldassistant.dao.AreasDAO;
 import nicknestor.nenfieldassistant.dao.LocationDAO;
 import nicknestor.nenfieldassistant.dao.AssetDAO;
-import nicknestor.nenfieldassistant.model.Area;
 import nicknestor.nenfieldassistant.model.Location;
 import nicknestor.nenfieldassistant.model.Asset;
 
@@ -32,11 +31,12 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
     public static final String TAG = "AddAssetActivity";
 
     private EditText mTxtAssetNumber;
-    private EditText mTxtCategory;
-    private EditText mTxtMachineType;
     private Button mBtnAdd;
     private Spinner mSpinnerLocation;
     private Spinner mSpinnerArea;
+    private Spinner mSpinnerCategory;
+    private Spinner mSpinnerMachinetype;
+
 
     private LocationDAO mLocationDao;
     private AssetDAO mAssetDao;
@@ -44,15 +44,22 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
 
 
     private Location mSelectedLocation;
-    private Area mSelectedArea;
     private SpinnerLocationsAdapter mLocationsAdapter;
-    private SpinnerAreasAdapter mAreasAdapter;
+
+
+    private String[] array_areas;
+    private String[] array_category;
+    private String[] array_type;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_asset);
+        array_areas = getResources().getStringArray(R.array.areas_array);
+        array_category = getResources().getStringArray(R.array.array_category);
+        array_type = getResources().getStringArray(R.array.array_crane_types);
+
 
         initViews();
 
@@ -66,21 +73,27 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
             mSpinnerLocation.setAdapter(mLocationsAdapter);
             mSpinnerLocation.setOnItemSelectedListener(this);
         }
-        List<Area> listAreas = mAreasDao.getAllAreas();
-        if(listAreas != null) {
-            mAreasAdapter = new SpinnerAreasAdapter(this, listAreas);
-            mSpinnerArea.setAdapter(mAreasAdapter);
-            mSpinnerArea.setOnItemSelectedListener(this);
-        }
 
 
+
+        ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_areas);
+        areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerArea.setAdapter(areasAdapter);
+
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_category);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerCategory.setAdapter(categoryAdapter);
+
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_type);
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerMachinetype.setAdapter(typeAdapter);
 
     }
 
     private void initViews() {
         this.mTxtAssetNumber = (EditText) findViewById(R.id.txt_assetnumber);
-        this.mTxtCategory = (EditText) findViewById(R.id.txt_category);
-        this.mTxtMachineType = (EditText) findViewById(R.id.txt_machinetype);
+        this.mSpinnerCategory = (Spinner) findViewById(R.id.spinner_category);
+        this.mSpinnerMachinetype = (Spinner) findViewById(R.id.spinner_machinetype);
         this.mSpinnerLocation = (Spinner) findViewById(R.id.spinner_location);
         this.mSpinnerArea = (Spinner) findViewById(R.id.spinner_area);
         this.mBtnAdd = (Button) findViewById(R.id.btn_add);
@@ -93,21 +106,34 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         switch (v.getId()) {
             case R.id.btn_add:
                 Editable assetnumber = mTxtAssetNumber.getText();
-                Editable category = mTxtCategory.getText();
-                Editable machinetype = mTxtMachineType.getText();
                 mSelectedLocation = (Location) mSpinnerLocation.getSelectedItem();
-                if (!TextUtils.isEmpty(assetnumber) && !TextUtils.isEmpty(category)
-                        && !TextUtils.isEmpty(machinetype) && mSelectedLocation != null
-                        && mSelectedArea != null) {
-                    // add the company to database
-                    Asset createdAsset = mAssetDao.createAsset(assetnumber.toString(), category.toString(), machinetype.toString(), mSelectedLocation.getId() , mSelectedArea.getId());
+                if (
+                        !TextUtils.isEmpty(assetnumber)
+                        && mSpinnerCategory.getSelectedItemPosition() != 0
+                        && mSpinnerMachinetype.getSelectedItemPosition() != 0
+                        && mSelectedLocation != null
+                        && mSpinnerArea.getSelectedItemPosition()!= 0) {
 
-                    Log.d(TAG, "added asset : "+ createdAsset.getAssetNumber());
+                    // add the asset to database
+                    Asset createdAsset = mAssetDao.createAsset(
+                            assetnumber.toString(),
+                            mSpinnerCategory.getSelectedItemPosition(),
+                            mSpinnerMachinetype.getSelectedItemPosition(),
+                            //mSelectedLocation.getId(),
+                            mSpinnerArea.getSelectedItemPosition());
+                    Log.d(TAG, "added asset : "+ assetnumber.toString());
                     setResult(RESULT_OK);
                     finish();
                 }
                 else {
                     Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "Failed adding asset : " +
+                            "Asset=" + assetnumber.toString() + " " +
+                            "Category=" + mSpinnerCategory.getSelectedItemPosition() + " " +
+                            "Type=" + mSpinnerMachinetype.getSelectedItemPosition() + " " +
+                            "Location=" + mSelectedLocation.getId() + " " +
+                            "Area=" + mSpinnerArea.getSelectedItemPosition());
+
                 }
                 break;
             default:
@@ -127,6 +153,7 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         mSelectedLocation = mLocationsAdapter.getItem(position);
         Log.d(TAG, "selectedCompany : " + mSelectedLocation.getStore());
     }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

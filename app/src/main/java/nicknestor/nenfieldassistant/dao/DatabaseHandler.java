@@ -72,10 +72,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_ASSETS = "CREATE TABLE " + CLASS_ASSETS.Table_Assets + "("
             + CLASS_ASSETS.Assets_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CLASS_ASSETS.Assets_assetnumber + " INTEGER NOT NULL, "
-            + CLASS_ASSETS.Assets_category + " TEXT NOT NULL, "
-            + CLASS_ASSETS.Assets_machinetype + " TEXT NOT NULL, "
-            + CLASS_ASSETS.Assets_location_id + " TEXT NOT NULL, "
-            + CLASS_ASSETS.Assets_Area_id + " TEXT NOT NULL "
+            + CLASS_ASSETS.Assets_category + " INTEGER NOT NULL, "
+            + CLASS_ASSETS.Assets_machinetype + " INTEGER NOT NULL, "
+            + CLASS_ASSETS.Assets_location_id + " LONG NOT NULL, "
+            + CLASS_ASSETS.Assets_Area_id + " INTEGER NOT NULL "
 
             +");";
 

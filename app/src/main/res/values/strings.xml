@@ -35,9 +35,62 @@
     <string name="machinetype">Type</string>
     <string name="select_a_location">Select a Location</string>
     <string name="select_an_area">Select an Area</string>
+    <string name="select_a_category">Select a Category</string>
     <string name="add">Add</string>
     <string name="add_new_asset">Add New Asset</string>
     <string name="all_assets">All Assets</string>
+
+    <string-array name="areas_array">
+        <item>Area:</item>
+        <item>Non WalMart</item>
+        <item>WM - Customer Service Desk</item>
+        <item>WM - FFC</item>
+        <item>WM - Front Wall</item>
+        <item>WM - Gameplay</item>
+        <item>WM - GM Vestibule</item>
+        <item>WM - GR Vestibule</item>
+        <item>WM - Other</item>
+        <item>WM - Sidewalk Outside</item>
+    </string-array>
+
+    <string-array name="array_category">
+        <item>Category:</item>
+        <item>Crane</item>
+        <item>Bulk</item>
+        <item>Ride</item>
+        <item>Video</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="array_crane_types">
+        <item>Type:</item>
+        <item>60" Low Deck</item>
+        <item>60" High Deck</item>
+        <item>42" Low Deck</item>
+        <item>42" High Deck</item>
+        <item>30"</item>
+        <item>Pirates Chest</item>
+    </string-array>
+
+    <string-array name="bulk_types">
+        <item>Type:</item>
+        <item>9 Head</item>
+        <item>7 Head</item>
+        <item>5 Head</item>
+        <item>Spiral</item>
+        <item>Bounce-a-roo</item>
+        <item>Sticker: 2 head</item>
+        <item>Sticker: 4 head</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="ride_types">
+        <item>Add Ride Type</item>
+    </string-array>
+
+    <string-array name="video_types">
+        <item>Add Video Type</item>
+    </string-array>
 
 
 <!-- Area -->
