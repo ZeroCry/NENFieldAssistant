@@ -134,18 +134,15 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long location_id) {
-/*        //Start: convert to Edit instead of Delete
+//TODO Replace this section with EditLocation instead of DeleteLocation
+/*
         Location clickedLocation = mAdapter.getItem(position);
         Intent intent = new Intent(this, AddLocationActivity.class);
 
         startActivityForResult(intent, REQUEST_CODE_ADD_LOCATION);
         mLocationDao.editLocation(clickedLocation);
 
-
-        //End: convert to Edit instead of Delete
-
-
-        //showDeleteDialogConfirmation(clickedLocation);
+        showDeleteDialogConfirmation(clickedLocation);
 */        return true;
     }
 

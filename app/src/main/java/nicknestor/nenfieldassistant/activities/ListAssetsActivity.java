@@ -26,6 +26,7 @@ import android.widget.Toast;
 import nicknestor.nenfieldassistant.R;
 import nicknestor.nenfieldassistant.adapter.ListAssetsAdapter;
 import nicknestor.nenfieldassistant.dao.AssetDAO;
+import nicknestor.nenfieldassistant.dao.DatabaseHandler;
 import nicknestor.nenfieldassistant.model.Asset;
 
 public class ListAssetsActivity extends Activity implements OnItemLongClickListener, OnItemClickListener, OnClickListener {
@@ -108,6 +109,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
 
                 if(mAssetDao == null)
                     this.mAssetDao = new AssetDAO(this);
+//TODO Join goes here?   Left join CLASS_ASSETS.Table_Assets to CLASS_ASSET_LOCATION.Table_Asset_Location
                 this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
                 if(mAdapter == null) {
                     this.mAdapter = new ListAssetsAdapter(this, mListAssets);
@@ -141,6 +143,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//TODO Replace this section with editAsset instead of deleteAsset
         Asset clickedAsset = mAdapter.getItem(position);
         Log.d(TAG, "longClickedItem : "+clickedAsset.getAssetNumber()+" "+clickedAsset.getCategory());
 

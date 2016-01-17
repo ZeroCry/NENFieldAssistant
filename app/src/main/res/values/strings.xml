@@ -72,7 +72,7 @@
         <item>Pirates Chest</item>
     </string-array>
 
-    <string-array name="bulk_types">
+    <string-array name="array_bulk_types">
         <item>Type:</item>
         <item>9 Head</item>
         <item>7 Head</item>
@@ -84,11 +84,11 @@
         <item>Other</item>
     </string-array>
 
-    <string-array name="ride_types">
+    <string-array name="array_ride_types">
         <item>Add Ride Type</item>
     </string-array>
 
-    <string-array name="video_types">
+    <string-array name="array_video_types">
         <item>Add Video Type</item>
     </string-array>
 

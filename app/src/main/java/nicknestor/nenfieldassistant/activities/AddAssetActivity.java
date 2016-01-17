@@ -4,6 +4,7 @@ package nicknestor.nenfieldassistant.activities;
 import java.util.List;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -18,6 +19,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import nicknestor.nenfieldassistant.R;
 import nicknestor.nenfieldassistant.adapter.SpinnerLocationsAdapter;
 import nicknestor.nenfieldassistant.dao.AreasDAO;
@@ -26,7 +31,7 @@ import nicknestor.nenfieldassistant.dao.AssetDAO;
 import nicknestor.nenfieldassistant.model.Location;
 import nicknestor.nenfieldassistant.model.Asset;
 
-public class AddAssetActivity extends Activity implements OnClickListener, OnItemSelectedListener{
+public class AddAssetActivity extends Activity implements OnClickListener, OnItemSelectedListener {
 
     public static final String TAG = "AddAssetActivity";
 
@@ -49,7 +54,18 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
 
     private String[] array_areas;
     private String[] array_category;
+    private String[] array_crane_types;
+    private String[] array_bulk_types;
+    private String[] array_ride_types;
+    private String[] array_video_types;
     private String[] array_type;
+
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
@@ -58,7 +74,12 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         setContentView(R.layout.activity_add_asset);
         array_areas = getResources().getStringArray(R.array.areas_array);
         array_category = getResources().getStringArray(R.array.array_category);
+//        array_crane_types = getResources().getStringArray(R.array.array_crane_types);
+//        array_bulk_types = getResources().getStringArray(R.array.array_bulk_types);
+//        array_ride_types = getResources().getStringArray(R.array.array_ride_types);
+//        array_video_types = getResources().getStringArray(R.array.array_video_types);
         array_type = getResources().getStringArray(R.array.array_crane_types);
+
 
 
         initViews();
@@ -68,17 +89,11 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         this.mAreasDao = new AreasDAO(this);
 
         List<Location> listLocations = mLocationDao.getAllLocations();
-        if(listLocations != null) {
+        if (listLocations != null) {
             mLocationsAdapter = new SpinnerLocationsAdapter(this, listLocations);
             mSpinnerLocation.setAdapter(mLocationsAdapter);
             mSpinnerLocation.setOnItemSelectedListener(this);
         }
-
-
-
-        ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_areas);
-        areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinnerArea.setAdapter(areasAdapter);
 
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_category);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -88,6 +103,14 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerMachinetype.setAdapter(typeAdapter);
 
+        ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_areas);
+        areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerArea.setAdapter(areasAdapter);
+
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initViews() {
@@ -109,23 +132,25 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                 mSelectedLocation = (Location) mSpinnerLocation.getSelectedItem();
                 if (
                         !TextUtils.isEmpty(assetnumber)
-                        && mSpinnerCategory.getSelectedItemPosition() != 0
-                        && mSpinnerMachinetype.getSelectedItemPosition() != 0
-                        && mSelectedLocation != null
-                        && mSpinnerArea.getSelectedItemPosition()!= 0) {
+                                && mSpinnerCategory.getSelectedItemPosition() != 0
+                                && mSpinnerMachinetype.getSelectedItemPosition() != 0
+                                && mSelectedLocation != null
+                                && mSpinnerArea.getSelectedItemPosition() != 0) {
 
-                    // add the asset to database
+//TODO add the asset to database
                     Asset createdAsset = mAssetDao.createAsset(
                             assetnumber.toString(),
                             mSpinnerCategory.getSelectedItemPosition(),
                             mSpinnerMachinetype.getSelectedItemPosition(),
-                            //mSelectedLocation.getId(),
-                            mSpinnerArea.getSelectedItemPosition());
-                    Log.d(TAG, "added asset : "+ assetnumber.toString());
+                            mSelectedLocation.getId(),
+                            mSpinnerArea.getSelectedItemPosition(),
+                            timestamp
+
+                    );
+                    Log.d(TAG, "added asset : " + assetnumber.toString());
                     setResult(RESULT_OK);
                     finish();
-                }
-                else {
+                } else {
                     Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
                     Log.d(TAG, "Failed adding asset : " +
                             "Asset=" + assetnumber.toString() + " " +
@@ -152,11 +177,54 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         mSelectedLocation = mLocationsAdapter.getItem(position);
         Log.d(TAG, "selectedCompany : " + mSelectedLocation.getStore());
+
     }
+
 
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+        mSpinnerCategory.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                Log.d(TAG,"Selected category : " + mSpinnerCategory.getSelectedItemId());
+//TODO This OnItemSelectedListener is supposed to set the machinetype spinner options based on what is selected from the category spinner
+                if (mSpinnerCategory.getSelectedItemId() == 1) {
+                    array_type = getResources().getStringArray(R.array.array_crane_types);
+                } else if (mSpinnerCategory.getSelectedItemId() == 2) {
+                    array_type = getResources().getStringArray(R.array.array_bulk_types);
+                } else if (mSpinnerCategory.getSelectedItemId() == 3) {
+                    array_type = getResources().getStringArray(R.array.array_ride_types);
+                } else if (mSpinnerCategory.getSelectedItemId() == 4){
+                    array_type = getResources().getStringArray(R.array.array_bulk_types);
+                } else if (mSpinnerCategory.getSelectedItemId() == 5){
+//TODO Array Other Types
+                    array_type = getResources().getStringArray(R.array.array_crane_types);
+                }
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        client.disconnect();
     }
 }

@@ -27,7 +27,10 @@ public class AssetDAO {
             DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
             DatabaseHandler.CLASS_ASSETS.Assets_category,
             DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
-            DatabaseHandler.CLASS_ASSETS.Assets_location_id,
+            DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_location,
+            DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_area,
+
+
 
     };
 
@@ -51,20 +54,19 @@ public class AssetDAO {
         mDbHelper.close();
     }
 
-    public Asset createAsset(String assetnumber, Integer category,
-                             Integer machinetype, Integer assetarea) {
+    public Asset createAsset(String assetnumber, Integer category, Integer machinetype, Integer asset_id,Long location_id, Integer areas_id, Integer timestamp) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_machinetype, machinetype);
-        values.put(DatabaseHandler.CLASS_ASSETS.Assets_Area_id, assetarea);
-        long insertId = mDatabase.insert(DatabaseHandler.CLASS_ASSETS.Table_Assets, null, values);
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns, DatabaseHandler.CLASS_ASSETS.Assets_id + " = " + insertId, null, null, null, null);
-        cursor.moveToFirst();
-        Asset newAsset = cursorToAsset(cursor);
-        cursor.close();
+//TODO duh, this next line wont work
+        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_asset, asset_id);
+        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_location, location_id);
+        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_area, areas_id);
+        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_timestamp, timestamp);
 
-        return newAsset;
+
+        return null;
     }
 
     public void deleteAsset(Asset asset) {
@@ -93,9 +95,9 @@ public class AssetDAO {
 
     public List<Asset> getAssetsOfLocation(long location_Id) {
         List<Asset> listAssets = new ArrayList<Asset>();
-
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
-                DatabaseHandler.CLASS_ASSETS.Assets_location_id + " = ?",
+//TODO Need a Join Thing here
+       Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
+                DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_location + " = ?",
                 new String[] { String.valueOf(location_Id) }, null, null, null);
 
         cursor.moveToFirst();

@@ -29,17 +29,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         protected static final String Table_Asset_Location = "AssetLocation";
         protected static final String Asset_Location_id = "_id";
         protected static final String Asset_Location_id_asset = "asset_id";
-        protected static final String Asset_Location_id_area = "area_id";
         protected static final String Asset_Location_id_location = "location_id";
-        }
+        protected static final String Asset_Location_id_area = "areas_id";
+        protected static final String Asset_Location_id_timestamp = "timestamp";
+
+    }
+
     protected static class CLASS_ASSETS {
         protected static final String Table_Assets = "Assets";
         protected static final String Assets_id = "asset_id";
         protected static final String Assets_assetnumber = "assetnumber";
         protected static final String Assets_category = "category";
         protected static final String Assets_machinetype = "machinetype";
-        protected static final String Assets_location_id = "assetlocation";
-        protected static final String Assets_Area_id = "assetarea";
 
     }
 
@@ -65,18 +66,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_ASSET_LOCATION = "CREATE TABLE " + CLASS_ASSET_LOCATION.Table_Asset_Location + "("
             + CLASS_ASSET_LOCATION.Asset_Location_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CLASS_ASSET_LOCATION.Asset_Location_id_asset + " INTEGER NOT NULL, "
-            + CLASS_ASSET_LOCATION.Asset_Location_id_area + " INTEGER NOT NULL, "
-            + CLASS_ASSET_LOCATION.Asset_Location_id_location + " INTEGER NOT NULL "
+            + CLASS_ASSET_LOCATION.Asset_Location_id_location + " INTEGER NOT NULL, "
+            + CLASS_ASSET_LOCATION.Asset_Location_id_area + " INTEGER NOT NULL "
+            + CLASS_ASSET_LOCATION.Asset_Location_id_timestamp + " INTEGER NOT NULL "
             +");";
 
     private static final String SQL_CREATE_TABLE_ASSETS = "CREATE TABLE " + CLASS_ASSETS.Table_Assets + "("
             + CLASS_ASSETS.Assets_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CLASS_ASSETS.Assets_assetnumber + " INTEGER NOT NULL, "
             + CLASS_ASSETS.Assets_category + " INTEGER NOT NULL, "
-            + CLASS_ASSETS.Assets_machinetype + " INTEGER NOT NULL, "
-            + CLASS_ASSETS.Assets_location_id + " LONG NOT NULL, "
-            + CLASS_ASSETS.Assets_Area_id + " INTEGER NOT NULL "
-
+            + CLASS_ASSETS.Assets_machinetype + " INTEGER NOT NULL "
             +");";
 
     private static final String SQL_CREATE_TABLE_AREAS = "CREATE TABLE " + CLASS_AREAS.Table_Areas + "("
