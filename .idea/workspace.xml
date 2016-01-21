@@ -8,6 +8,9 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/UsefulClasses.java" line="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="42165615-98cb-4913-9685-e66b5d3a390f" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Area.java" />
@@ -56,8 +59,8 @@
             <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/DatabaseHandler.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.1607565">
-                    <caret line="33" column="73" selection-start-line="33" selection-start-column="73" selection-end-line="33" selection-end-column="73" />
+                  <state vertical-scroll-proportion="0.7887668">
+                    <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -73,17 +76,42 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="AssetDAO.java" pinned="false" current-in-tab="true">
+            <file leaf-file-name="AssetDAO.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetDAO.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.5543071">
-                    <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+                  <state vertical-scroll-proportion="-19.62963">
+                    <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
                     <folding>
                       <element signature="imports" expanded="true" />
-                      <element signature="e#1523#1524#0" expanded="true" />
-                      <element signature="e#1556#1557#0" expanded="true" />
-                      <element signature="e#2859#2866#0" expanded="true" />
-                      <element signature="e#3420#3427#0" expanded="true" />
+                      <element signature="e#1504#1505#0" expanded="true" />
+                      <element signature="e#1544#1545#0" expanded="true" />
+                      <element signature="e#2357#2364#0" expanded="true" />
+                      <element signature="e#2935#2942#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="AssetLocationsDAO.java" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetLocationsDAO.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="-17.0">
+                    <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="LocationDAO.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/LocationDAO.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.3545568">
+                    <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                      <element signature="e#1658#1659#0" expanded="true" />
+                      <element signature="e#1698#1699#0" expanded="true" />
+                      <element signature="e#4263#4273#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -119,15 +147,116 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddAssetActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddAssetActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddAssetActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6378987">
-              <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+            <state vertical-scroll-proportion="-12.111111">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3712#3720#0" expanded="true" />
-                <element signature="e#6317#6346#0" expanded="true" />
+                <element signature="e#3991#3999#0" expanded="true" />
+                <element signature="e#6793#6822#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListLocationsActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListLocationsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="5.2690477">
+              <caret line="163" column="43" selection-start-line="163" selection-start-column="43" selection-end-line="163" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddLocationActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddLocationActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignInActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/SignInActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssetLocation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/AssetLocation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#901#902#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+                <element signature="e#965#966#0" expanded="true" />
+                <element signature="e#995#996#0" expanded="true" />
+                <element signature="e#1031#1032#0" expanded="true" />
+                <element signature="e#1063#1064#0" expanded="true" />
+                <element signature="e#1113#1114#0" expanded="true" />
+                <element signature="e#1155#1156#0" expanded="true" />
+                <element signature="e#1194#1195#0" expanded="true" />
+                <element signature="e#1229#1230#0" expanded="true" />
+                <element signature="e#1285#1286#0" expanded="true" />
+                <element signature="e#1333#1334#0" expanded="true" />
+                <element signature="e#1369#1370#0" expanded="true" />
+                <element signature="e#1401#1402#0" expanded="true" />
+                <element signature="e#1451#1452#0" expanded="true" />
+                <element signature="e#1493#1494#0" expanded="true" />
+                <element signature="e#1529#1530#0" expanded="true" />
+                <element signature="e#1562#1563#0" expanded="true" />
+                <element signature="e#1613#1614#0" expanded="true" />
+                <element signature="e#1657#1658#0" expanded="true" />
+                <element signature="e#1688#1689#0" expanded="true" />
+                <element signature="e#1717#1718#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
+                <element signature="e#1826#1827#0" expanded="true" />
+                <element signature="e#1854#1855#0" expanded="true" />
+                <element signature="e#1895#1896#0" expanded="true" />
+                <element signature="e#1929#1930#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Location.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Asset.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Asset.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsefulClasses.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/UsefulClasses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,9 +265,11 @@
       <file leaf-file-name="ListAssetsActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListAssetsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="2" selection-start-line="111" selection-start-column="2" selection-end-line="111" selection-end-column="2" />
-              <folding />
+            <state vertical-scroll-proportion="-36.11111">
+              <caret line="113" column="38" selection-start-line="113" selection-start-column="38" selection-end-line="113" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1733,13 +1864,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddLocationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_list_locations.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_location.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_location.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/adapter/ListLocationsAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Location.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Asset.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Area.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_asset.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -1753,13 +1881,20 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/spinner_item_location.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/adapter/SpinnerLocationsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_asset.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/LocationDAO.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListLocationsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListAssetsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Asset.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Location.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/UsefulClasses.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetLocationsDAO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/AssetLocation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/SignInActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddAssetActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListAssetsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListLocationsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetDAO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddLocationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/LocationDAO.java" />
       </list>
     </option>
   </component>
@@ -1827,6 +1962,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NENFieldAssistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1858,6 +2015,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="nenfieldassistant" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NENFieldAssistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nenfieldassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1880,6 +2059,60 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NENFieldAssistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nenfieldassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NENFieldAssistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nenfieldassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NENFieldAssistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1905,8 +2138,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="nicknestor.nenfieldassistant.adapter" />
       <recent name="nicknestor.nenfieldassistant.model" />
+      <recent name="nicknestor.nenfieldassistant.dao" />
+      <recent name="nicknestor.nenfieldassistant.adapter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Nick\Documents\GitHub\NENFieldAssistant\app\src\main\res\layout" />
@@ -2098,25 +2332,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1688" height="1014" extended-state="7" />
+    <frame x="-4" y="-4" width="1688" height="1014" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912844" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912844" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4575688" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4575688" sideWeight="0.492674" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.495116" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.504884" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4575688" sideWeight="0.507326" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912844" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.504884" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32798165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32798165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912844" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2127,7 +2362,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2181,55 +2415,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="2" selection-start-line="67" selection-start-column="2" selection-end-line="67" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#2859#2866#0" expanded="true" />
-            <element signature="e#3420#3427#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="50" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddAssetActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3712#3720#0" expanded="true" />
-            <element signature="e#6317#6346#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListAssetsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="174" column="65" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="65" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2239,10 +2431,10 @@
           <caret line="67" column="2" selection-start-line="67" selection-start-column="2" selection-end-line="67" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#2859#2866#0" expanded="true" />
-            <element signature="e#3420#3427#0" expanded="true" />
+            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="e#1544#1545#0" expanded="true" />
+            <element signature="e#2357#2364#0" expanded="true" />
+            <element signature="e#2935#2942#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2263,8 +2455,8 @@
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3712#3720#0" expanded="true" />
-            <element signature="e#6317#6346#0" expanded="true" />
+            <element signature="e#3991#3999#0" expanded="true" />
+            <element signature="e#6793#6822#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2342,13 +2534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-27.185184">
           <caret line="150" column="61" selection-start-line="15" selection-start-column="4" selection-end-line="150" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1029083">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -2519,13 +2704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddLocationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.62963">
-          <caret line="87" column="49" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AreasDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2579,40 +2757,9 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.074074">
+        <state vertical-scroll-proportion="-21.518518">
           <caret line="64" column="22" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
-          <folding>
-            <element signature="e#504#525#0" expanded="true" />
-            <element signature="e#935#962#0" expanded="true" />
-            <element signature="e#1361#1382#0" expanded="true" />
-            <element signature="e#1761#1788#0" expanded="true" />
-            <element signature="e#2132#2156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Asset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08037825">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/LocationDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66547406">
-          <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4256#4266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListLocationsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3041145">
-          <caret line="136" column="71" selection-start-line="136" selection-start-column="71" selection-end-line="136" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2624,30 +2771,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListAssetsActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="2" selection-start-line="111" selection-start-column="2" selection-end-line="111" selection-end-column="2" />
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/UsefulClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/Asset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/model/AssetLocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#1031#1032#0" expanded="true" />
+            <element signature="e#1063#1064#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1155#1156#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1285#1286#0" expanded="true" />
+            <element signature="e#1333#1334#0" expanded="true" />
+            <element signature="e#1369#1370#0" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+            <element signature="e#1451#1452#0" expanded="true" />
+            <element signature="e#1493#1494#0" expanded="true" />
+            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#1562#1563#0" expanded="true" />
+            <element signature="e#1613#1614#0" expanded="true" />
+            <element signature="e#1657#1658#0" expanded="true" />
+            <element signature="e#1688#1689#0" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1826#1827#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#1895#1896#0" expanded="true" />
+            <element signature="e#1929#1930#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/SignInActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddAssetActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6378987">
-          <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+        <state vertical-scroll-proportion="-12.111111">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3712#3720#0" expanded="true" />
-            <element signature="e#6317#6346#0" expanded="true" />
+            <element signature="e#3991#3999#0" expanded="true" />
+            <element signature="e#6793#6822#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/DatabaseHandler.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetLocationsDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1607565">
-          <caret line="33" column="73" selection-start-line="33" selection-start-column="73" selection-end-line="33" selection-end-column="73" />
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListAssetsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-36.11111">
+          <caret line="113" column="38" selection-start-line="113" selection-start-column="38" selection-end-line="113" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2656,14 +2874,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5543071">
-          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        <state vertical-scroll-proportion="-19.62963">
+          <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#2859#2866#0" expanded="true" />
-            <element signature="e#3420#3427#0" expanded="true" />
+            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="e#1544#1545#0" expanded="true" />
+            <element signature="e#2357#2364#0" expanded="true" />
+            <element signature="e#2935#2942#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/AddLocationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/activities/ListLocationsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.2690477">
+          <caret line="163" column="43" selection-start-line="163" selection-start-column="43" selection-end-line="163" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7887668">
+          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/LocationDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3545568">
+          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1658#1659#0" expanded="true" />
+            <element signature="e#1698#1699#0" expanded="true" />
+            <element signature="e#4263#4273#0" expanded="true" />
           </folding>
         </state>
       </provider>

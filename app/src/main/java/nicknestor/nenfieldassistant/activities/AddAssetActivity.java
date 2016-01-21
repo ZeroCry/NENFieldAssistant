@@ -24,10 +24,13 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import nicknestor.nenfieldassistant.R;
+import nicknestor.nenfieldassistant.UsefulClasses;
 import nicknestor.nenfieldassistant.adapter.SpinnerLocationsAdapter;
 import nicknestor.nenfieldassistant.dao.AreasDAO;
+import nicknestor.nenfieldassistant.dao.AssetLocationsDAO;
 import nicknestor.nenfieldassistant.dao.LocationDAO;
 import nicknestor.nenfieldassistant.dao.AssetDAO;
+import nicknestor.nenfieldassistant.model.AssetLocation;
 import nicknestor.nenfieldassistant.model.Location;
 import nicknestor.nenfieldassistant.model.Asset;
 
@@ -46,6 +49,7 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
     private LocationDAO mLocationDao;
     private AssetDAO mAssetDao;
     private AreasDAO mAreasDao;
+    private AssetLocationsDAO mAssetLocationDao;
 
 
     private Location mSelectedLocation;
@@ -87,6 +91,8 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         this.mLocationDao = new LocationDAO(this);
         this.mAssetDao = new AssetDAO(this);
         this.mAreasDao = new AreasDAO(this);
+        this.mAssetLocationDao = new AssetLocationsDAO(this);
+
 
         List<Location> listLocations = mLocationDao.getAllLocations();
         if (listLocations != null) {
@@ -141,12 +147,18 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                     Asset createdAsset = mAssetDao.createAsset(
                             assetnumber.toString(),
                             mSpinnerCategory.getSelectedItemPosition(),
-                            mSpinnerMachinetype.getSelectedItemPosition(),
+                            mSpinnerMachinetype.getSelectedItemPosition()
+                    );
+
+                    AssetLocation createdAssetLocation = mAssetLocationDao.createAssetLocation(
+
+                            createdAsset.getId(),
                             mSelectedLocation.getId(),
                             mSpinnerArea.getSelectedItemPosition(),
-                            timestamp
-
+                            UsefulClasses.getCurrentTimeStamp()
                     );
+
+
                     Log.d(TAG, "added asset : " + assetnumber.toString());
                     setResult(RESULT_OK);
                     finish();

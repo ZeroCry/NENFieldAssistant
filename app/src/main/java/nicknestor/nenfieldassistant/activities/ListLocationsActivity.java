@@ -162,7 +162,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
             public void onClick(DialogInterface dialog, int which) {
                 // delete the Location and refresh the list
                 if (mLocationDao != null) {
-                    mLocationDao.deleteLocation(clickedLocation);
+                    //mLocationDao.deleteLocation(clickedLocation);
                     mListLocations.remove(clickedLocation);
 
                     //refresh the listView

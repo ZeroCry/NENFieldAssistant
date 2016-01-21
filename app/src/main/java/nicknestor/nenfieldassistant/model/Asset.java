@@ -7,7 +7,7 @@ public class Asset implements Serializable {
     public static final String TAG = "Asset";
     private static final long serialVersionUID = -7406082437623008161L;
 
-    private long mId;
+    private Integer mId;
     private String mAssetNumber;
     private String mCategory;
     private String mMachineType;
@@ -16,18 +16,18 @@ public class Asset implements Serializable {
 
     }
 
-    public Asset(Long asset_id, String assetnumber, String category, String machinetype) {
+    public Asset(Integer asset_id, String assetnumber, String category, String machinetype) {
         this.mId = asset_id;
         this.mAssetNumber = assetnumber;
         this.mCategory = category;
         this.mMachineType = machinetype;
     }
 
-    public long getId() {
+    public Integer getId() {
         return mId;
     }
 
-    public void setId(long mId) {
+    public void setId(Integer mId) {
         this.mId = mId;
     }
 

@@ -45,7 +45,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
     private List<Asset> mListAssets;
     private AssetDAO mAssetDao;
 
-    private long mLocationId = -1;
+    private Integer mLocationId = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,11 +59,11 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
         this.mAssetDao = new AssetDAO(this);
         Intent intent  = getIntent();
         if(intent != null) {
-            this.mLocationId = intent.getLongExtra(EXTRA_SELECTED_LOCATION_ID, -1);
+            this.mLocationId = intent.getIntExtra(EXTRA_SELECTED_LOCATION_ID, -1);
         }
 
         if(mLocationId != -1) {
-            this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
+            this.mListAssets = mAssetDao.getAssetsOfLocation();
             // fill the listView
             if(mListAssets != null && !mListAssets.isEmpty()) {
                 this.mAdapter = new ListAssetsAdapter(this, mListAssets);
@@ -109,8 +109,8 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
 
                 if(mAssetDao == null)
                     this.mAssetDao = new AssetDAO(this);
-//TODO Join goes here?   Left join CLASS_ASSETS.Table_Assets to CLASS_ASSET_LOCATION.Table_Asset_Location
-                this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
+//TODO Join goes here?   Left join CLASS_ASSETS.Table_Assets to CLASS_ASSETLOCATION.Table_AssetLocation
+                this.mListAssets = mAssetDao.getAssetsOfLocation();
                 if(mAdapter == null) {
                     this.mAdapter = new ListAssetsAdapter(this, mListAssets);
                     this.mListviewAssets.setAdapter(mAdapter);

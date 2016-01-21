@@ -15,7 +15,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     protected static class CLASS_LOCATIONS {
         protected static final String Table_Locations = "Locations";
-        protected static final String Locations_id = "location_id";
+        protected static final String Locations_id = "_id";
         protected static final String Locations_store = "store";
         protected static final String Locations_abbr = "abbr";
         protected static final String Locations_storeNumber = "storeID";
@@ -25,23 +25,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         protected static final String Locations_zip = "zip";
         protected static final String Locations_phone = "phone";
     }
-    protected static class CLASS_ASSET_LOCATION {
-        protected static final String Table_Asset_Location = "AssetLocation";
-        protected static final String Asset_Location_id = "_id";
-        protected static final String Asset_Location_id_asset = "asset_id";
-        protected static final String Asset_Location_id_location = "location_id";
-        protected static final String Asset_Location_id_area = "areas_id";
-        protected static final String Asset_Location_id_timestamp = "timestamp";
-
+    protected static class CLASS_ASSETLOCATION {
+        protected static final String Table_AssetLocation = "AssetLocation";
+        protected static final String AssetLocation_id = "_id";
+        protected static final String AssetLocation_id_asset = "asset_id";
+        protected static final String AssetLocation_id_location = "location_id";
+        protected static final String AssetLocation_id_area = "areas_id";
+        protected static final String AssetLocation_timestamp = "timestamp";
+        protected static final String AssetLocation_notes = "notes";
+        protected static final String AssetLocation_user = "user";
     }
 
     protected static class CLASS_ASSETS {
         protected static final String Table_Assets = "Assets";
-        protected static final String Assets_id = "asset_id";
+        protected static final String Assets_id = "_id";
         protected static final String Assets_assetnumber = "assetnumber";
         protected static final String Assets_category = "category";
         protected static final String Assets_machinetype = "machinetype";
-
     }
 
     protected static class CLASS_AREAS {
@@ -63,12 +63,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + CLASS_LOCATIONS.Locations_phone + " INTEGER "
             +");";
 
-    private static final String SQL_CREATE_TABLE_ASSET_LOCATION = "CREATE TABLE " + CLASS_ASSET_LOCATION.Table_Asset_Location + "("
-            + CLASS_ASSET_LOCATION.Asset_Location_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + CLASS_ASSET_LOCATION.Asset_Location_id_asset + " INTEGER NOT NULL, "
-            + CLASS_ASSET_LOCATION.Asset_Location_id_location + " INTEGER NOT NULL, "
-            + CLASS_ASSET_LOCATION.Asset_Location_id_area + " INTEGER NOT NULL "
-            + CLASS_ASSET_LOCATION.Asset_Location_id_timestamp + " INTEGER NOT NULL "
+    private static final String SQL_CREATE_TABLE_ASSET_LOCATION = "CREATE TABLE " + CLASS_ASSETLOCATION.Table_AssetLocation + "("
+            + CLASS_ASSETLOCATION.AssetLocation_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + CLASS_ASSETLOCATION.AssetLocation_id_asset + " INTEGER NOT NULL, "
+            + CLASS_ASSETLOCATION.AssetLocation_id_location + " INTEGER NOT NULL, "
+            + CLASS_ASSETLOCATION.AssetLocation_id_area + " INTEGER NOT NULL "
+            + CLASS_ASSETLOCATION.AssetLocation_timestamp + " INTEGER NOT NULL "
+            + CLASS_ASSETLOCATION.AssetLocation_notes + " TEXT NOT NULL "
+            + CLASS_ASSETLOCATION.AssetLocation_user + " TEXT NOT NULL "
             +");";
 
     private static final String SQL_CREATE_TABLE_ASSETS = "CREATE TABLE " + CLASS_ASSETS.Table_Assets + "("
@@ -102,7 +104,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.v(TAG,
                 "Upgrading the database from version " + oldVersion + " to " + newVersion);
         db.execSQL("DROP TABLE IF EXISTS " + CLASS_LOCATIONS.Table_Locations);
-        db.execSQL("DROP TABLE IF EXISTS "+ CLASS_ASSET_LOCATION.Table_Asset_Location);
+        db.execSQL("DROP TABLE IF EXISTS "+ CLASS_ASSETLOCATION.Table_AssetLocation);
         db.execSQL("DROP TABLE IF EXISTS "+ CLASS_ASSETS.Table_Assets);
         db.execSQL("DROP TABLE IF EXISTS "+ CLASS_AREAS.Table_Areas);
         onCreate(db);

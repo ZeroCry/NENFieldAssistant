@@ -10,7 +10,7 @@ public class Location implements Serializable {
     public static final String TAG = "Location";
 
 
-    private long mId;
+    private Integer mId;
     private String mStore;
     private String mAbbr;
     private String mStoreNumber;
@@ -22,7 +22,7 @@ public class Location implements Serializable {
 
     //public Location(){};
 
-    public Location(Long location_id, String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
+    public Location(Integer location_id, String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
         this.mId = location_id;
         this.mStore = store;
         this.mAbbr = abbr;
@@ -35,8 +35,8 @@ public class Location implements Serializable {
     }
 
 
-    public long getId() {return mId;}
-    public void setId(long mId) {this.mId = mId;}
+    public Integer getId() {return mId;}
+    public void setId(Integer mId) {this.mId = mId;}
 
     public String getStore() { return mStore;}
     public void setStore(String mStore) {this.mStore = mStore;}

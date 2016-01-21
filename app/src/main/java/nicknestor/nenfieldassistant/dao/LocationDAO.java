@@ -70,8 +70,8 @@ public class LocationDAO {
         return newLocation;
     }
 
-    public void deleteLocation(Location location) {
-        long location_id = location.getId();
+ /*   public void deleteLocation(Location location) {
+        Integer location_id = location.getId();
         // delete all assets of this location
         AssetDAO assetDao = new AssetDAO(mContext);
         List<Asset> listAssets = assetDao.getAssetsOfLocation(location_id);
@@ -85,7 +85,7 @@ public class LocationDAO {
         mDatabase.delete(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, DatabaseHandler.CLASS_LOCATIONS.Locations_id
                 + " = " + location_id, null);
     }
-
+*/
 //TODO Set up editLocation function
 
 /*    public void editLocation(Location Location) {
@@ -117,7 +117,7 @@ public class LocationDAO {
         return listLocations;
     }
 
-    public Location getLocationById(long location_id) {
+    public Location getLocationById(Integer location_id) {
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
                 DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = ?",
                 new String[] { String.valueOf(location_id) }, null,null,null);
@@ -129,7 +129,16 @@ public class LocationDAO {
     }
 
     protected Location cursorToLocation(Cursor cursor) {
-        Location location = new Location(cursor.getLong(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8));
+        Location location = new Location(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4),
+                cursor.getString(5),
+                cursor.getString(6),
+                cursor.getString(7),
+                cursor.getString(8));
         return location;
     }
 

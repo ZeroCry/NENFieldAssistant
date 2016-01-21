@@ -6,12 +6,14 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import nicknestor.nenfieldassistant.dao.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.database.sqlite.SQLiteQueryBuilder;
 
-import nicknestor.nenfieldassistant.model.Location;
 import nicknestor.nenfieldassistant.model.Asset;
+import nicknestor.nenfieldassistant.model.AssetLocation;
 
 public class AssetDAO {
 
@@ -21,21 +23,16 @@ public class AssetDAO {
 
     // Database fields
     private SQLiteDatabase mDatabase;
-    private DatabaseHandler mDbHelper;
+    private DatabaseHandler mDatabaseHandler;
     private String[] mAllColumns = {
             DatabaseHandler.CLASS_ASSETS.Assets_id,
             DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
             DatabaseHandler.CLASS_ASSETS.Assets_category,
             DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
-            DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_location,
-            DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_area,
-
-
-
     };
 
     public AssetDAO(Context context) {
-        mDbHelper = new DatabaseHandler(context);
+        mDatabaseHandler = new DatabaseHandler(context);
         this.mContext = context;
         // open the database
         try {
@@ -47,31 +44,24 @@ public class AssetDAO {
     }
 
     public void open() throws SQLException {
-        mDatabase = mDbHelper.getWritableDatabase();
+        mDatabase = mDatabaseHandler.getWritableDatabase();
     }
 
     public void close() {
-        mDbHelper.close();
+        mDatabaseHandler.close();
     }
 
-    public Asset createAsset(String assetnumber, Integer category, Integer machinetype, Integer asset_id,Long location_id, Integer areas_id, Integer timestamp) {
+    public Asset createAsset(String assetnumber, Integer category, Integer machinetype) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_machinetype, machinetype);
-//TODO duh, this next line wont work
-        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_asset, asset_id);
-        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_location, location_id);
-        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_area, areas_id);
-        values.put(DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_timestamp, timestamp);
-
-
-        return null;
+       return null;
     }
 
     public void deleteAsset(Asset asset) {
-        long asset_id = asset.getId();
-        System.out.println("the deleted employee has the id: " + asset_id);
+        Integer asset_id = asset.getId();
+        System.out.println("the deleted asset has the id: " + asset_id);
         mDatabase.delete(DatabaseHandler.CLASS_ASSETS.Table_Assets, DatabaseHandler.CLASS_ASSETS.Assets_id
                 + " = " + asset_id, null);
     }
@@ -93,31 +83,59 @@ public class AssetDAO {
         return listAssets;
     }
 
-    public List<Asset> getAssetsOfLocation(long location_Id) {
-        List<Asset> listAssets = new ArrayList<Asset>();
-//TODO Need a Join Thing here
-       Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
-                DatabaseHandler.CLASS_ASSET_LOCATION.Asset_Location_id_location + " = ?",
-                new String[] { String.valueOf(location_Id) }, null, null, null);
+    public ArrayList<Asset> getAssetsOfLocation() {
+//TODO This is JOIN THING?
+        ArrayList<Asset> assets = new ArrayList<Asset>();
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder
+                .setTables(DatabaseHandler.CLASS_ASSETS.Table_Assets
+                        + " INNER JOIN "
+                        + DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation
+                        + " ON "
+                        + DatabaseHandler.CLASS_ASSETS.Assets_id
+                        + " = "
+                        + DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset);
 
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            Asset asset = cursorToAsset(cursor);
-            listAssets.add(asset);
-            cursor.moveToNext();
+        // Get cursor
+        Cursor cursor = queryBuilder.query(mDatabase, new String[]{
+                        DatabaseHandler.CLASS_ASSETS.Table_Assets + "."
+                                + DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
+                        DatabaseHandler.CLASS_ASSETS.Assets_category,
+                        DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
+                        DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location}, null, null, null, null,
+                null);
+
+        while (cursor.moveToNext()) {
+            Asset asset = new Asset();
+            asset.setId(cursor.getInt(0));
+            asset.setAssetNumber(cursor.getString(1));
+            asset.setCategory(cursor.getString(2));
+            asset.setMachineType(cursor.getString(3));
+
+
+            AssetLocation assetlocation = new AssetLocation();
+            assetlocation.setId(cursor.getInt(4));
+            assetlocation.setLocation_id(cursor.getInt(5));
+            assetlocation.setAreas_id(cursor.getInt(6));
+            assetlocation.setTimestamp(cursor.getString(7));
+            assetlocation.setNotes(cursor.getString(8));
+            assetlocation.setUser(cursor.getString(9));
+
+
+            assets.add(asset);
         }
-        // make sure to close the cursor
-        cursor.close();
-        return listAssets;
+        return assets;
+
     }
 
     private Asset cursorToAsset(Cursor cursor) {
         Asset asset = new Asset();
-        asset.setId(cursor.getLong(0));
+        asset.setId(cursor.getInt(0));
         asset.setAssetNumber(cursor.getString(1));
         asset.setCategory(cursor.getString(2));
         asset.setMachineType(cursor.getString(3));
         return asset;
     }
+
 
 }
