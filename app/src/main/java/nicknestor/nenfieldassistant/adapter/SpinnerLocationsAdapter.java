@@ -37,7 +37,7 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position).getId() : position;
+        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position).getLocationId() : position;
     }
 
     @Override
@@ -48,10 +48,8 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
             v = mInflater.inflate(R.layout.spinner_item_location, parent, false);
             holder = new ViewHolder();
             holder.txtStoreName = (TextView) v.findViewById(R.id.txt_spinner_location);
-            holder.txtStoreId = (TextView) v.findViewById(R.id.txt_spinner_storeid);
-
-            holder.txtAddress = (TextView) v.findViewById(R.id.txt_spinner_address);
-            holder.txtCity = (TextView) v.findViewById(R.id.txt_spinner_citystatezip);
+             holder.txtAddress = (TextView) v.findViewById(R.id.txt_spinner_address);
+            holder.txtCityStateZip = (TextView) v.findViewById(R.id.txt_spinner_citystatezip);
             v.setTag(holder);
         }
         else {
@@ -61,10 +59,9 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
         // fill row data
         Location currentItem = getItem(position);
         if(currentItem != null) {
-            holder.txtStoreName.setText(currentItem.getStore());
-            holder.txtStoreId.setText(currentItem.getStoreID());
+            holder.txtStoreName.setText(currentItem.getStore() + " #" + currentItem.getStoreID());
             holder.txtAddress.setText(currentItem.getAddress());
-            holder.txtCity.setText(currentItem.getCity());
+            holder.txtCityStateZip.setText(currentItem.getCity() + ", " + currentItem.getState() + " " + currentItem.getZip());
         }
 
         return v;
@@ -82,6 +79,6 @@ public class SpinnerLocationsAdapter extends BaseAdapter {
         TextView txtStoreName;
         TextView txtStoreId;
         TextView txtAddress;
-        TextView txtCity;
+        TextView txtCityStateZip;
     }
 }

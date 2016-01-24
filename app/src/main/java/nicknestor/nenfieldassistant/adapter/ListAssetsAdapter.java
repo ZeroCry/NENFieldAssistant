@@ -19,8 +19,8 @@ public class ListAssetsAdapter extends BaseAdapter {
     private List<Asset> mItems;
     private LayoutInflater mInflater;
 
-    public ListAssetsAdapter(Context context, List<Asset> listCompanies) {
-        this.setItems(listCompanies);
+    public ListAssetsAdapter(Context context, List<Asset> listAssets) {
+        this.setItems(listAssets);
         this.mInflater = LayoutInflater.from(context);
     }
 
@@ -36,7 +36,7 @@ public class ListAssetsAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position).getId() : position;
+        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position).getAssetId() : position;
     }
 
     @Override

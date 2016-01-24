@@ -40,7 +40,7 @@ public class ListAreasAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position).getId() : position;
+        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position).getAreaId() : position;
     }
 
     @Override

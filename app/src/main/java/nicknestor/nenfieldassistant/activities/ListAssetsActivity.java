@@ -45,7 +45,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
     private List<Asset> mListAssets;
     private AssetDAO mAssetDao;
 
-    private Integer mLocationId = -1;
+    private long mLocationId = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
         this.mAssetDao = new AssetDAO(this);
         Intent intent  = getIntent();
         if(intent != null) {
-            this.mLocationId = intent.getIntExtra(EXTRA_SELECTED_LOCATION_ID, -1);
+            this.mLocationId = intent.getLongExtra(EXTRA_SELECTED_LOCATION_ID, -1);
         }
 
         if(mLocationId != -1) {

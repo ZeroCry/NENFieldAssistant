@@ -15,8 +15,9 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import nicknestor.nenfieldassistant.model.Asset;
 import nicknestor.nenfieldassistant.model.AssetLocation;
 
-public class AssetDAO {
 
+public class AssetDAO {
+    public static final String ASSET_ID_WITH_PREFIX = "asset.id";
     public static final String TAG = "AssetDAO";
 
     private Context mContext;
@@ -60,7 +61,7 @@ public class AssetDAO {
     }
 
     public void deleteAsset(Asset asset) {
-        Integer asset_id = asset.getId();
+        Long asset_id = asset.getAssetId();
         System.out.println("the deleted asset has the id: " + asset_id);
         mDatabase.delete(DatabaseHandler.CLASS_ASSETS.Table_Assets, DatabaseHandler.CLASS_ASSETS.Assets_id
                 + " = " + asset_id, null);
@@ -83,8 +84,8 @@ public class AssetDAO {
         return listAssets;
     }
 
+    //TODO This is where it fails?
     public ArrayList<Asset> getAssetsOfLocation() {
-//TODO This is JOIN THING?
         ArrayList<Asset> assets = new ArrayList<Asset>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder
@@ -96,10 +97,11 @@ public class AssetDAO {
                         + " = "
                         + DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset);
 
+
         // Get cursor
         Cursor cursor = queryBuilder.query(mDatabase, new String[]{
-                        DatabaseHandler.CLASS_ASSETS.Table_Assets + "."
-                                + DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
+                        DatabaseHandler.CLASS_ASSETS.Assets_id,
+                        DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
                         DatabaseHandler.CLASS_ASSETS.Assets_category,
                         DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
                         DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location}, null, null, null, null,
@@ -107,20 +109,14 @@ public class AssetDAO {
 
         while (cursor.moveToNext()) {
             Asset asset = new Asset();
-            asset.setId(cursor.getInt(0));
+            asset.setAssetId(cursor.getLong(0));
             asset.setAssetNumber(cursor.getString(1));
             asset.setCategory(cursor.getString(2));
             asset.setMachineType(cursor.getString(3));
 
 
             AssetLocation assetlocation = new AssetLocation();
-            assetlocation.setId(cursor.getInt(4));
-            assetlocation.setLocation_id(cursor.getInt(5));
-            assetlocation.setAreas_id(cursor.getInt(6));
-            assetlocation.setTimestamp(cursor.getString(7));
-            assetlocation.setNotes(cursor.getString(8));
-            assetlocation.setUser(cursor.getString(9));
-
+            assetlocation.setLocation_id(cursor.getLong(4));
 
             assets.add(asset);
         }
@@ -130,12 +126,17 @@ public class AssetDAO {
 
     private Asset cursorToAsset(Cursor cursor) {
         Asset asset = new Asset();
-        asset.setId(cursor.getInt(0));
+        asset.setAssetId(cursor.getLong(0));
         asset.setAssetNumber(cursor.getString(1));
         asset.setCategory(cursor.getString(2));
         asset.setMachineType(cursor.getString(3));
         return asset;
     }
 
+    public Long[] getIDforAsset(Integer[] AssetNumber) {
+        Long[] asset_id = new Long[]{};
+            mDatabase.rawQuery("SELECT asset_id FROM assets WHERE assetnumber = " + AssetNumber, null);
+            return asset_id;
 
+    }
 }

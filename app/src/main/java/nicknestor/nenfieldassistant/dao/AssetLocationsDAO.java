@@ -46,13 +46,14 @@ public class AssetLocationsDAO {
         mDatabaseHandler.close();
     }
 
-    public AssetLocation createAssetLocation(Integer asset_id, Integer location_id, Integer areas_id, String timestamp) {
+    public AssetLocation createAssetLocation(Long asset_id, Long location_id, Long areas_id, String timestamp, String notes, String user) {
         ContentValues values = new ContentValues();
-//TODO this next line wont work... obviously
         values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset, asset_id);
         values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location, location_id);
         values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_area, areas_id);
         values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_timestamp, timestamp);
+        values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_notes, notes);
+        values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_user, user);
 
 
         return null;

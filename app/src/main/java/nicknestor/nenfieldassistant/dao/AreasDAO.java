@@ -63,7 +63,7 @@ public class AreasDAO {
     }
 
     public void deleteArea(Area area) {
-        long id = area.getId();
+        long id = area.getAreaId();
         System.out.println("the deleted employee has the id: " + id);
         mDatabase.delete(DatabaseHandler.CLASS_AREAS.Table_Areas, DatabaseHandler.CLASS_AREAS.Areas_id
                 + " = " + id, null);
@@ -86,12 +86,12 @@ public class AreasDAO {
         return listAreas;
     }
 
-    public List<Area> getAreasOfLocation(long location_Id) {
+    public List<Area> getAreasOfLocation(long location_id) {
         List<Area> listAreas = new ArrayList<Area>();
 
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_AREAS.Table_Areas, mAllColumns,
                 DatabaseHandler.CLASS_AREAS.Areas_id + " = ?",
-                new String[] { String.valueOf(location_Id) }, null, null, null);
+                new String[] { String.valueOf(location_id) }, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -105,9 +105,9 @@ public class AreasDAO {
     }
 
     private Area cursorToArea(Cursor cursor) {
-        Area area = new Area();
-        area.setId(cursor.getLong(0));
-        area.setArea(cursor.getString(1));
+        Area area = new Area(
+                cursor.getLong(0),
+                cursor.getInt(1));
 
         return area;
     }

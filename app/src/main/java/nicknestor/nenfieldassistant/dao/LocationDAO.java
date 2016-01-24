@@ -33,7 +33,7 @@ public class LocationDAO {
 
     public LocationDAO(Context context) {
         this.mContext = context;
-        this.mDatabaseHandler = new DatabaseHandler(context);
+        mDatabaseHandler = new DatabaseHandler(context);
         try {
             open();
         } catch (SQLException e) {
@@ -50,20 +50,20 @@ public class LocationDAO {
         mDatabaseHandler.close();
     }
 
-    public Location createLocation(String store, String abbr, String storeID, String address, String city, String state, String zip, String phone) {
+    public Location createLocation(String store, String abbr, String storenumber, String address, String city, String state, String zip, String phone) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_store, store);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_abbr, abbr);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_storeNumber, storeID);
+        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_storeNumber, storenumber);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_address, address);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_city, city);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_state, state);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_zip, zip);
         values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_phone, phone);
-        long insertId = mDatabase
+        Long insertLocationId = mDatabase
                 .insert(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, null, values);
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
-                DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = " + insertId, null, null, null, null, null);
+                DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = " + insertLocationId, null, null, null, null);
         cursor.moveToFirst();
         Location newLocation = cursorToLocation(cursor);
         cursor.close();
@@ -71,7 +71,7 @@ public class LocationDAO {
     }
 
  /*   public void deleteLocation(Location location) {
-        Integer location_id = location.getId();
+        Long location_id = location.getId();
         // delete all assets of this location
         AssetDAO assetDao = new AssetDAO(mContext);
         List<Asset> listAssets = assetDao.getAssetsOfLocation(location_id);
@@ -104,7 +104,9 @@ public class LocationDAO {
 
     public List<Location> getAllLocations() {
         List<Location> listLocations = new ArrayList<Location>();
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns, null, null, null, null, null);
+
+        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
+                null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
@@ -117,10 +119,10 @@ public class LocationDAO {
         return listLocations;
     }
 
-    public Location getLocationById(Integer location_id) {
+    public Location getLocationById(long id) {
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
                 DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = ?",
-                new String[] { String.valueOf(location_id) }, null,null,null);
+                new String[] { String.valueOf(id) }, null,null,null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -129,16 +131,16 @@ public class LocationDAO {
     }
 
     protected Location cursorToLocation(Cursor cursor) {
-        Location location = new Location(
-                cursor.getInt(0),
-                cursor.getString(1),
-                cursor.getString(2),
-                cursor.getString(3),
-                cursor.getString(4),
-                cursor.getString(5),
-                cursor.getString(6),
-                cursor.getString(7),
-                cursor.getString(8));
+        Location location = new Location();
+        location.setLocationId(cursor.getLong(0));
+        location.setStore(cursor.getString(1));
+        location.setAbbr(cursor.getString(2));
+        location.setStoreNumber(cursor.getString(3));
+        location.setAddress(cursor.getString(4));
+        location.setCity(cursor.getString(5));
+        location.setState(cursor.getString(6));
+        location.setZip(cursor.getString(7));
+        location.setPhone(cursor.getString(8));
         return location;
     }
 

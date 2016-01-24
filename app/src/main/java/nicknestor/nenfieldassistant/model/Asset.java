@@ -7,34 +7,30 @@ public class Asset implements Serializable {
     public static final String TAG = "Asset";
     private static final long serialVersionUID = -7406082437623008161L;
 
-    private Integer mId;
+    private Long mAssetId;
     private String mAssetNumber;
     private String mCategory;
     private String mMachineType;
+
+    private AssetLocation assetlocation;
 
     public Asset() {
 
     }
 
-    public Asset(Integer asset_id, String assetnumber, String category, String machinetype) {
-        this.mId = asset_id;
+    public Asset(Long asset_id, String assetnumber, String category, String machinetype) {
+        this.mAssetId = asset_id;
         this.mAssetNumber = assetnumber;
         this.mCategory = category;
         this.mMachineType = machinetype;
     }
 
-    public Integer getId() {
-        return mId;
-    }
-
-    public void setId(Integer mId) {
-        this.mId = mId;
-    }
+    public Long getAssetId() {return mAssetId;}
+    public void setAssetId(Long mAssetId) {this.mAssetId = mAssetId;}
 
     public String getAssetNumber() {
         return mAssetNumber;
     }
-
     public void setAssetNumber(String mAssetNumber) {
         this.mAssetNumber = mAssetNumber;
     }
@@ -42,7 +38,6 @@ public class Asset implements Serializable {
     public String getCategory() {
         return mCategory;
     }
-
     public void setCategory(String mCategory) {
         this.mCategory = mCategory;
     }
@@ -50,7 +45,6 @@ public class Asset implements Serializable {
     public String getMachineType() {
         return mMachineType;
     }
-
     public void setMachineType(String mMachineType) {
         this.mMachineType = mMachineType;
     }

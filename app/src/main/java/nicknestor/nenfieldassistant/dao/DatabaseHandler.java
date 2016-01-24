@@ -15,7 +15,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     protected static class CLASS_LOCATIONS {
         protected static final String Table_Locations = "Locations";
-        protected static final String Locations_id = "_id";
+        protected static final String Locations_id = "locations_id";
         protected static final String Locations_store = "store";
         protected static final String Locations_abbr = "abbr";
         protected static final String Locations_storeNumber = "storeID";
@@ -27,7 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     protected static class CLASS_ASSETLOCATION {
         protected static final String Table_AssetLocation = "AssetLocation";
-        protected static final String AssetLocation_id = "_id";
+        protected static final String AssetLocation_id = "assetlocation_id";
         protected static final String AssetLocation_id_asset = "asset_id";
         protected static final String AssetLocation_id_location = "location_id";
         protected static final String AssetLocation_id_area = "areas_id";
@@ -38,7 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     protected static class CLASS_ASSETS {
         protected static final String Table_Assets = "Assets";
-        protected static final String Assets_id = "_id";
+        protected static final String Assets_id = "assets_id";
         protected static final String Assets_assetnumber = "assetnumber";
         protected static final String Assets_category = "category";
         protected static final String Assets_machinetype = "machinetype";
@@ -46,7 +46,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     protected static class CLASS_AREAS {
         protected static final String Table_Areas = "Areas";
-        protected static final String Areas_id = "areas_id";
+        protected static final String Areas_id = "area_id";
         protected static final String Areas_area = "areas_area";
     }
 
@@ -63,13 +63,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + CLASS_LOCATIONS.Locations_phone + " INTEGER "
             +");";
 
-    private static final String SQL_CREATE_TABLE_ASSET_LOCATION = "CREATE TABLE " + CLASS_ASSETLOCATION.Table_AssetLocation + "("
+    private static final String SQL_CREATE_TABLE_ASSETLOCATION = "CREATE TABLE " + CLASS_ASSETLOCATION.Table_AssetLocation + "("
             + CLASS_ASSETLOCATION.AssetLocation_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + CLASS_ASSETLOCATION.AssetLocation_id_asset + " INTEGER NOT NULL, "
             + CLASS_ASSETLOCATION.AssetLocation_id_location + " INTEGER NOT NULL, "
-            + CLASS_ASSETLOCATION.AssetLocation_id_area + " INTEGER NOT NULL "
-            + CLASS_ASSETLOCATION.AssetLocation_timestamp + " INTEGER NOT NULL "
-            + CLASS_ASSETLOCATION.AssetLocation_notes + " TEXT NOT NULL "
+            + CLASS_ASSETLOCATION.AssetLocation_id_area + " INTEGER NOT NULL, "
+            + CLASS_ASSETLOCATION.AssetLocation_timestamp + " INTEGER NOT NULL, "
+            + CLASS_ASSETLOCATION.AssetLocation_notes + " TEXT NOT NULL, "
             + CLASS_ASSETLOCATION.AssetLocation_user + " TEXT NOT NULL "
             +");";
 
@@ -82,7 +82,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_TABLE_AREAS = "CREATE TABLE " + CLASS_AREAS.Table_Areas + "("
             + CLASS_AREAS.Areas_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + CLASS_AREAS.Areas_area + " TEXT NOT NULL "
+            + CLASS_AREAS.Areas_area + " INTEGER NOT NULL "
             +");";
 
 
@@ -94,7 +94,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase database) {
         database.execSQL(SQL_CREATE_TABLE_LOCATIONS);
-        database.execSQL(SQL_CREATE_TABLE_ASSET_LOCATION);
+        database.execSQL(SQL_CREATE_TABLE_ASSETLOCATION);
         database.execSQL(SQL_CREATE_TABLE_ASSETS);
         database.execSQL(SQL_CREATE_TABLE_AREAS);
     }
@@ -103,7 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.v(TAG,
                 "Upgrading the database from version " + oldVersion + " to " + newVersion);
-        db.execSQL("DROP TABLE IF EXISTS " + CLASS_LOCATIONS.Table_Locations);
+        db.execSQL("DROP TABLE IF EXISTS "+ CLASS_LOCATIONS.Table_Locations);
         db.execSQL("DROP TABLE IF EXISTS "+ CLASS_ASSETLOCATION.Table_AssetLocation);
         db.execSQL("DROP TABLE IF EXISTS "+ CLASS_ASSETS.Table_Assets);
         db.execSQL("DROP TABLE IF EXISTS "+ CLASS_AREAS.Table_Areas);

@@ -8,9 +8,10 @@ import java.io.Serializable;
 public class Location implements Serializable {
 
     public static final String TAG = "Location";
+    private static final long serialVersionUID = -7406082437623008161L;
 
 
-    private Integer mId;
+    private long mLocationId;
     private String mStore;
     private String mAbbr;
     private String mStoreNumber;
@@ -20,10 +21,9 @@ public class Location implements Serializable {
     private String mZip;
     private String mPhone;
 
-    //public Location(){};
 
-    public Location(Integer location_id, String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
-        this.mId = location_id;
+/*    public Location(Long _id, String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
+        this.mId = _id;
         this.mStore = store;
         this.mAbbr = abbr;
         this.mStoreNumber = storeNumber;
@@ -32,11 +32,13 @@ public class Location implements Serializable {
         this.mState = state;
         this.mZip = zip;
         this.mPhone = phone;
-    }
+    }*/
+
+    public Location(){};
 
 
-    public Integer getId() {return mId;}
-    public void setId(Integer mId) {this.mId = mId;}
+    public long getLocationId() {return mLocationId;}
+    public void setLocationId(long mId) {this.mLocationId = mLocationId;}
 
     public String getStore() { return mStore;}
     public void setStore(String mStore) {this.mStore = mStore;}

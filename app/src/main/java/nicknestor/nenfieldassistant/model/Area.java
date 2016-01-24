@@ -7,31 +7,27 @@ public class Area implements Serializable {
     public static final String TAG = "Area";
     private static final long serialVersionUID = -7406082437623008161L;
 
-    private long mId;
-    private String mArea;
+    private Long mAreaId;
+    private Integer mArea;
 
-    public Area() {
+    //public Area() {};
 
-    }
-
-    public Area(Long area_id, String area) {
-        this.mId = area_id;
+    public Area(Long Area_id, Integer area) {
+        this.mAreaId = Area_id;
         this.mArea = area;
     }
 
-    public long getId() {
-        return mId;
+    public Long getAreaId() {
+        return mAreaId;
+    }
+    public void setAreaId(Long mAreaId) {
+        this.mAreaId = mAreaId;
     }
 
-    public void setId(long mId) {
-        this.mId = mId;
-    }
-
-    public String getArea() {
+    public Integer getArea() {
         return mArea;
     }
-
-    public void setArea(String mArea) {
+    public void setArea(Integer mArea) {
         this.mArea = mArea;
     }
 
