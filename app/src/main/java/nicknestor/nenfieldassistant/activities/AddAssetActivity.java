@@ -156,11 +156,11 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                             mSpinnerMachinetype.getSelectedItemPosition()
                     );
 
-                    AssetDAO getIDforAsset = mAssetDao.getIDforAsset(mTxtAssetNumber);
+                    int assetid = mAssetDao.getIDofAsset(assetnumber.toString());
 
                     AssetLocation createdAssetLocation = mAssetLocationDao.createAssetLocation(
-                            getIDforAsset.asset_id,
-                            mSelectedLocation.getLocationId(),
+                            assetid,
+                            mSpinnerLocation.getSelectedItemPosition(),
                             mSpinnerArea.getSelectedItemId(),
                             UsefulClasses.getCurrentTimeStamp(),
                             mTxtNotes.toString(),
@@ -171,9 +171,9 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                             "Asset=" + assetnumber.toString() + " " +
                             "Category=" + mSpinnerCategory.getSelectedItemPosition() + " " +
                             "Type=" + mSpinnerMachinetype.getSelectedItemPosition() + " " +
-                            "Location=" + mSelectedLocation + " " +
-                            "Area=" + mSelectedArea);
-                    //Log.d(TAG, "added asset : " + assetnumber.toString());
+                            "Location=" + mSpinnerLocation.getSelectedItemPosition() + " " +
+                            "Area=" + mSpinnerArea.getSelectedItemPosition());
+
                     setResult(RESULT_OK);
                     finish();
                 } else {
@@ -182,7 +182,7 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                             "Asset=" + assetnumber.toString() + " " +
                             "Category=" + mSpinnerCategory.getSelectedItemPosition() + " " +
                             "Type=" + mSpinnerMachinetype.getSelectedItemPosition() + " " +
-                            "Location=" + mSelectedLocation + " " +
+                            "Location=" + mSpinnerLocation.getSelectedItemPosition() + " " +
                             "Area=" + mSelectedArea);
 
                 }
@@ -203,7 +203,7 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         mSelectedLocation = mLocationsAdapter.getItem(position);
 //        mSelectedArea = mAreasAdapter.getItem(position);
-        Log.d(TAG, "selectedCompany : " + mSelectedLocation.getStore());
+        Log.d(TAG, "selectedCompany : " + mSelectedLocation.getStore() + ", " + mSpinnerLocation.getSelectedItemPosition());
 
     }
 

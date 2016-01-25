@@ -124,9 +124,9 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long Location_id) {
         Location clickedLocation = mAdapter.getItem(position);
-        Log.d(TAG, "clickedItem : " + clickedLocation.getStore());
+        Log.d(TAG, "clickedItem : " + clickedLocation.getStore() + ", " + clickedLocation.getLocationId());
         Intent intent = new Intent(this, ListAssetsActivity.class);
         intent.putExtra(ListAssetsActivity.EXTRA_SELECTED_LOCATION_ID, clickedLocation.getLocationId());
         startActivity(intent);

@@ -46,7 +46,7 @@ public class AssetLocationsDAO {
         mDatabaseHandler.close();
     }
 
-    public AssetLocation createAssetLocation(Long asset_id, Long location_id, Long areas_id, String timestamp, String notes, String user) {
+    public AssetLocation createAssetLocation(Integer asset_id, Integer location_id, Long areas_id, String timestamp, String notes, String user) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset, asset_id);
         values.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location, location_id);

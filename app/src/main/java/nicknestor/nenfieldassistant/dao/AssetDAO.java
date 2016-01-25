@@ -57,6 +57,7 @@ public class AssetDAO {
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_machinetype, machinetype);
+
        return null;
     }
 
@@ -133,10 +134,13 @@ public class AssetDAO {
         return asset;
     }
 
-    public Long[] getIDforAsset(Integer[] AssetNumber) {
-        Long[] asset_id = new Long[]{};
-            mDatabase.rawQuery("SELECT asset_id FROM assets WHERE assetnumber = " + AssetNumber, null);
-            return asset_id;
+    public int getIDofAsset(String assetnumber) {
+            //Long assetid = null;
+            Cursor cursor = mDatabase.rawQuery("SELECT assets_id FROM assets WHERE assetnumber = " + assetnumber, null);
+                cursor.moveToFirst();
+                    int assetid = cursor.getColumnIndex("assets_id");
+                cursor.close();
+            return assetid;
 
     }
 }

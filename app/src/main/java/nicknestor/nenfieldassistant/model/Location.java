@@ -38,7 +38,7 @@ public class Location implements Serializable {
 
 
     public long getLocationId() {return mLocationId;}
-    public void setLocationId(long mId) {this.mLocationId = mLocationId;}
+    public void setLocationId(long mLocationId) {this.mLocationId = mLocationId;}
 
     public String getStore() { return mStore;}
     public void setStore(String mStore) {this.mStore = mStore;}
