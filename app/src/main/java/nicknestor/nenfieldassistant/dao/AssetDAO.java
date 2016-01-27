@@ -96,18 +96,21 @@ public class AssetDAO {
     public List<Asset> getAssetsOfLocation(long locationId) {
         List<Asset> listassets = new ArrayList<Asset>();
 
-        String tables = DatabaseHandler.CLASS_ASSETS.Table_Assets
+/*        String tables = DatabaseHandler.CLASS_ASSETS.Table_Assets
                         + " INNER JOIN "
                         + DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation
                         + " ON "
                         + DatabaseHandler.CLASS_ASSETS.Assets_id
                         + " = "
                         + DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset;
+*/
+
+        Cursor cursor = mDatabase.rawQuery("SELECT DatabaseHandler.CLASS_ASSETS.Table_Assets INNER JOIN DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation ON DatabaseHandler.CLASS_ASSETS.Assets_id = DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset WHERE DatabaseHandler.CLASS_ASSETLOCATION = ?",
+            "locationId"
 
 
-        Cursor cursor = mDatabase.query(
 //                DatabaseHandler.CLASS_ASSETS.Table_Assets,mAllColumns,null,null,null,null,null
-                tables,mAllColumns,null,null,null,null,null
+//                tables,mAllColumns,null,null,null,null,null
 /*                tables,
                 new String[]{
                         DatabaseHandler.CLASS_ASSETS.Assets_id,
@@ -116,7 +119,7 @@ public class AssetDAO {
                         DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
                         DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location},
                 DatabaseHandler.CLASS_ASSETS.Assets_id + " = ?",
-                new String[] {String.valueOf(locationId)},null,null,null*/
+                new String[] {String.valueOf(locationId)},null,null,null,null,null,null*/
                 );
 
 
