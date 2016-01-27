@@ -127,6 +127,7 @@ public class LocationDAO {
             cursor.moveToFirst();
         }
         Location location = cursorToLocation(cursor);
+
         return location;
     }
 

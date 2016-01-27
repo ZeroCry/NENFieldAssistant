@@ -20,6 +20,7 @@ public class Location implements Serializable {
     private String mState;
     private String mZip;
     private String mPhone;
+    private long mLocation;
 
 
 /*    public Location(Long _id, String store, String abbr, String storeNumber, String address, String city, String state, String zip, String phone) {
@@ -64,6 +65,8 @@ public class Location implements Serializable {
     public String getPhone() {return mPhone;}
     public void setPhone(String mPhone) {this.mPhone = mPhone;}
 
+    public Long getLocation() {return mLocation;}
+    public void setLocation(Long mLocation) {this.mLocation = mLocation;}
 
 
 

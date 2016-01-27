@@ -11,8 +11,7 @@ public class Asset implements Serializable {
     private String mAssetNumber;
     private String mCategory;
     private String mMachineType;
-
-    private AssetLocation assetlocation;
+    private Location mLocation;
 
     public Asset() {
 
@@ -49,4 +48,10 @@ public class Asset implements Serializable {
         this.mMachineType = mMachineType;
     }
 
+    public Location getLocation() {
+        return mLocation;
+    }
+    public void setLocation(Location mLocation) {
+        this.mLocation = mLocation;
+    }
 }

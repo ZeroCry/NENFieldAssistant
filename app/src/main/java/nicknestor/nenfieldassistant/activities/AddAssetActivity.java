@@ -138,8 +138,11 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         switch (v.getId()) {
             case R.id.btn_add:
                 Editable assetnumber = mTxtAssetNumber.getText();
+                Editable notes = mTxtNotes.getText();
                 mSelectedLocation = (Location) mSpinnerLocation.getSelectedItem();
                 //mSelectedArea = (Area) mSpinnerArea.getSelectedItem();
+
+
 
                 if (
                         !TextUtils.isEmpty(assetnumber)
@@ -149,22 +152,20 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                                 //&& mSelectedArea != null
                                  ) {
 
-//TODO add the asset to database
+
                     Asset createdAsset = mAssetDao.createAsset(
                             assetnumber.toString(),
                             mSpinnerCategory.getSelectedItemPosition(),
                             mSpinnerMachinetype.getSelectedItemPosition()
                     );
 
-                    int assetid = mAssetDao.getIDofAsset(assetnumber.toString());
-
                     AssetLocation createdAssetLocation = mAssetLocationDao.createAssetLocation(
-                            assetid,
+                            mAssetDao.getIDofAsset(assetnumber.toString()),
                             mSpinnerLocation.getSelectedItemPosition(),
                             mSpinnerArea.getSelectedItemId(),
                             UsefulClasses.getCurrentTimeStamp(),
-                            mTxtNotes.toString(),
-                            mTxtNotes.toString()
+                            notes.toString(),
+                            notes.toString()
                             );
 
                     Log.d(TAG, "Asset Added : " +
@@ -173,6 +174,14 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                             "Type=" + mSpinnerMachinetype.getSelectedItemPosition() + " " +
                             "Location=" + mSpinnerLocation.getSelectedItemPosition() + " " +
                             "Area=" + mSpinnerArea.getSelectedItemPosition());
+
+                    Log.d(TAG, "AssetLocation Added : " +
+                            "AssetID=" + mAssetDao.getIDofAsset(assetnumber.toString()) + " " +
+                            "LocationID=" + mSpinnerLocation.getSelectedItemPosition() + " " +
+                            "AreaID=" + mSpinnerArea.getSelectedItemId() +" " +
+                            "Timestamp=" + UsefulClasses.getCurrentTimeStamp() +" " +
+                            "Notes=" + mTxtNotes.toString());
+
 
                     setResult(RESULT_OK);
                     finish();

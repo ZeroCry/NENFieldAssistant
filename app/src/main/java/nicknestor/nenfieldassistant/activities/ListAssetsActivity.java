@@ -63,11 +63,15 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
         }
 
         if(mLocationId != -1) {
-            this.mListAssets = mAssetDao.getAssetsOfLocation();
+            this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
+            Log.d(TAG, "list Assets : " + mListAssets);
             // fill the listView
             if(mListAssets != null && !mListAssets.isEmpty()) {
                 this.mAdapter = new ListAssetsAdapter(this, mListAssets);
                 this.mListviewAssets.setAdapter(mAdapter);
+//TODO Assets of Location Go Here
+                //Log.d(TAG, "list Assets : " + mListAssets);
+
             }
             else {
                 this.mTxtEmptyListAssets.setVisibility(View.VISIBLE);
@@ -110,7 +114,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
                 if(mAssetDao == null)
                     this.mAssetDao = new AssetDAO(this);
 //TODO Join goes here?   Left join CLASS_ASSETS.Table_Assets to CLASS_ASSETLOCATION.Table_AssetLocation
-                this.mListAssets = mAssetDao.getAssetsOfLocation();
+                this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
                 if(mAdapter == null) {
                     this.mAdapter = new ListAssetsAdapter(this, mListAssets);
                     this.mListviewAssets.setAdapter(mAdapter);

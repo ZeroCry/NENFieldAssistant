@@ -31,9 +31,7 @@ public class AssetLocation implements Serializable {
     public Long getAssetLocationId() {
         return mAssetLocationId;
     }
-    public void setAssetLocationId(Long mAssetLocationId) {
-        this.mAssetLocationId = mAssetLocationId;
-    }
+    public void setAssetLocationId(Long mAssetLocationId) {this.mAssetLocationId = mAssetLocationId;}
 
     public Long getAsset_id() {
         return mAsset_id;
@@ -42,9 +40,7 @@ public class AssetLocation implements Serializable {
         this.mAsset_id = mAsset_id;
     }
 
-    public Long getLocation_id() {
-        return mLocation_id;
-    }
+    public Long getLocation_id() {return mLocation_id;}
     public void setLocation_id(Long mLocation_id) {
         this.mLocation_id = mLocation_id;
     }

@@ -69,7 +69,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + CLASS_ASSETLOCATION.AssetLocation_id_location + " INTEGER NOT NULL, "
             + CLASS_ASSETLOCATION.AssetLocation_id_area + " INTEGER NOT NULL, "
             + CLASS_ASSETLOCATION.AssetLocation_timestamp + " INTEGER NOT NULL, "
-            + CLASS_ASSETLOCATION.AssetLocation_notes + " TEXT NOT NULL, "
+            + CLASS_ASSETLOCATION.AssetLocation_notes + " TEXT, "
             + CLASS_ASSETLOCATION.AssetLocation_user + " TEXT NOT NULL "
             +");";
 

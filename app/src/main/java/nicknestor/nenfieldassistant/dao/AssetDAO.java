@@ -14,12 +14,13 @@ import android.database.sqlite.SQLiteQueryBuilder;
 
 import nicknestor.nenfieldassistant.model.Asset;
 import nicknestor.nenfieldassistant.model.AssetLocation;
+import nicknestor.nenfieldassistant.model.Location;
 
 
 public class AssetDAO {
     public static final String ASSET_ID_WITH_PREFIX = "asset.id";
     public static final String TAG = "AssetDAO";
-
+    public String locationassets;
     private Context mContext;
 
     // Database fields
@@ -57,8 +58,14 @@ public class AssetDAO {
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
         values.put(DatabaseHandler.CLASS_ASSETS.Assets_machinetype, machinetype);
-
-       return null;
+        Long insertAssetId = mDatabase
+                .insert(DatabaseHandler.CLASS_ASSETS.Table_Assets, null, values);
+        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
+                DatabaseHandler.CLASS_ASSETS.Assets_id + " = " + insertAssetId, null,null,null,null);
+        cursor.moveToFirst();
+        Asset newAsset = cursorToAsset(cursor);
+        cursor.close();
+       return newAsset;
     }
 
     public void deleteAsset(Asset asset) {
@@ -85,43 +92,47 @@ public class AssetDAO {
         return listAssets;
     }
 
-    //TODO This is where it fails?
-    public ArrayList<Asset> getAssetsOfLocation() {
-        ArrayList<Asset> assets = new ArrayList<Asset>();
-        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder
-                .setTables(DatabaseHandler.CLASS_ASSETS.Table_Assets
+
+    public List<Asset> getAssetsOfLocation(long locationId) {
+        List<Asset> listassets = new ArrayList<Asset>();
+
+        String tables = DatabaseHandler.CLASS_ASSETS.Table_Assets
                         + " INNER JOIN "
                         + DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation
                         + " ON "
                         + DatabaseHandler.CLASS_ASSETS.Assets_id
                         + " = "
-                        + DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset);
+                        + DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset;
 
 
-        // Get cursor
-        Cursor cursor = queryBuilder.query(mDatabase, new String[]{
+        Cursor cursor = mDatabase.query(
+//                DatabaseHandler.CLASS_ASSETS.Table_Assets,mAllColumns,null,null,null,null,null
+                tables,mAllColumns,null,null,null,null,null
+/*                tables,
+                new String[]{
                         DatabaseHandler.CLASS_ASSETS.Assets_id,
                         DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
                         DatabaseHandler.CLASS_ASSETS.Assets_category,
                         DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
-                        DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location}, null, null, null, null,
-                null);
-
-        while (cursor.moveToNext()) {
-            Asset asset = new Asset();
-            asset.setAssetId(cursor.getLong(0));
-            asset.setAssetNumber(cursor.getString(1));
-            asset.setCategory(cursor.getString(2));
-            asset.setMachineType(cursor.getString(3));
+                        DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location},
+                DatabaseHandler.CLASS_ASSETS.Assets_id + " = ?",
+                new String[] {String.valueOf(locationId)},null,null,null*/
+                );
 
 
-            AssetLocation assetlocation = new AssetLocation();
-            assetlocation.setLocation_id(cursor.getLong(4));
+        Log.d(TAG, "mDatabase : " + mDatabase);
 
-            assets.add(asset);
+
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Asset asset = cursorToAsset(cursor);
+            listassets.add(asset);
+            cursor.moveToNext();
         }
-        return assets;
+        cursor.close();
+        Log.d(TAG, "listassets : " + listassets);
+        return listassets;
 
     }
 
