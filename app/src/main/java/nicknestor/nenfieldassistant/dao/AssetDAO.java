@@ -135,11 +135,18 @@ public class AssetDAO {
         return asset;
     }
 
-    public int getIDofAsset(String assetnumber) {
-            //Long assetid = null;
-            Cursor cursor = mDatabase.rawQuery("SELECT assets_id FROM assets WHERE assetnumber = " + assetnumber, null);
+    public Integer getIDofAsset(String assetnumber) {
+            Cursor cursor = mDatabase.rawQuery(
+                    "SELECT " +
+                    DatabaseHandler.CLASS_ASSETS.Assets_id +
+                    " FROM " +
+                    DatabaseHandler.CLASS_ASSETS.Table_Assets +
+                    " WHERE " +
+                    DatabaseHandler.CLASS_ASSETS.Assets_assetnumber +
+                    " = ? "
+                    , new String[]{ assetnumber});
                 cursor.moveToFirst();
-                    int assetid = cursor.getColumnIndex("assets_id");
+                    Integer assetid = cursor.getColumnIndex("assets_id");
                 cursor.close();
             return assetid;
 

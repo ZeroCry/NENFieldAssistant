@@ -137,12 +137,10 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add:
-                Editable assetnumber = mTxtAssetNumber.getText();
-                Editable notes = mTxtNotes.getText();
+                Editable assetnumber = this.mTxtAssetNumber.getText();
+                Editable notes = this.mTxtNotes.getText();
                 mSelectedLocation = (Location) mSpinnerLocation.getSelectedItem();
                 //mSelectedArea = (Area) mSpinnerArea.getSelectedItem();
-
-
 
                 if (
                         !TextUtils.isEmpty(assetnumber)
