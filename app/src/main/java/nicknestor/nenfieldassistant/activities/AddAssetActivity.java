@@ -161,7 +161,7 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
 
                     AssetLocation createdAssetLocation = mAssetLocationDao.createAssetLocation(
                             mAssetDao.getIDofAsset(assetnumber.toString()),
-                            mSpinnerLocation.getSelectedItemPosition(),
+                            mSelectedLocation.getLocationId(),
                             mSpinnerArea.getSelectedItemId(),
                             UsefulClasses.getCurrentTimeStamp(),
                             notes.toString(),
@@ -172,7 +172,7 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
                             "Asset=" + assetnumber.toString() + " " +
                             "Category=" + mSpinnerCategory.getSelectedItemPosition() + " " +
                             "Type=" + mSpinnerMachinetype.getSelectedItemPosition() + " " +
-                            "Location=" + mSpinnerLocation.getSelectedItemPosition() + " " +
+                            "Location=" + mSelectedLocation.getLocationId() + " " +
                             "Area=" + mSpinnerArea.getSelectedItemPosition());
 
                     Log.d(TAG, "AssetLocation Added : " +
