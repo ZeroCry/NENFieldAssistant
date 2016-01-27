@@ -97,11 +97,16 @@ public class AssetDAO {
         List<Asset> listassets = new ArrayList<Asset>();
 
         Cursor cursor = mDatabase.rawQuery(
-            "SELECT DatabaseHandler.CLASS_ASSETS.Table_Assets " +
-                "INNER JOIN DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation " +
-                "ON DatabaseHandler.CLASS_ASSETS.Assets_id " +
-                "= DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset " +
-                "WHERE DatabaseHandler.CLASS_ASSETLOCATION = ?",
+            "SELECT * FROM " + DatabaseHandler.CLASS_ASSETS.Table_Assets +
+                " INNER JOIN " +
+                DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation +
+                " ON " +
+                DatabaseHandler.CLASS_ASSETS.Assets_id +
+                " = " +
+                DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset +
+                " WHERE " +
+                DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location +
+                " = ?",
                 new String[] {Long.toString(locationId)}
         );
 

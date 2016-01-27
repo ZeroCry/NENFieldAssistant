@@ -186,8 +186,8 @@
           <file leaf-file-name="AssetDAO.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetDAO.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5151515">
-                  <caret line="104" column="56" selection-start-line="104" selection-start-column="56" selection-end-line="104" selection-end-column="56" />
+                <state vertical-scroll-proportion="0.4848485">
+                  <caret line="107" column="77" selection-start-line="107" selection-start-column="77" selection-end-line="107" selection-end-column="77" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#3496#3503#0" expanded="true" />
@@ -2544,7 +2544,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1688" height="1014" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -3062,8 +3062,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/nicknestor/nenfieldassistant/dao/AssetDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5151515">
-          <caret line="104" column="56" selection-start-line="104" selection-start-column="56" selection-end-line="104" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.4848485">
+          <caret line="107" column="77" selection-start-line="107" selection-start-column="77" selection-end-line="107" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3496#3503#0" expanded="true" />
