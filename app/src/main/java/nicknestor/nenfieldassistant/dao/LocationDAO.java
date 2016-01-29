@@ -119,6 +119,24 @@ public class LocationDAO {
         return listLocations;
     }
 
+/*
+    public List<Location> getAllLocations() {
+        List<Location> listLocations = new ArrayList<Location>();
+
+        Cursor cursor = ianap.SimpleQuery(DatabaseHandler.CLASS_LOCATIONS.Table_Locations);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Location location = cursorToLocation(cursor);
+                listLocations.add(location);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return listLocations;
+    }
+*/
+
     public Location getLocationById(long id) {
         Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
                 DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = ?",

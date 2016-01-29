@@ -210,7 +210,6 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         mSelectedLocation = mLocationsAdapter.getItem(position);
 //        mSelectedArea = mAreasAdapter.getItem(position);
-        Log.d(TAG, "selectedCompany : " + mSelectedLocation.getStore() + ", " + mSpinnerLocation.getSelectedItemPosition());
 
     }
 

@@ -126,7 +126,7 @@ public class AssetDAO {
 
     }
 
-    private Asset cursorToAsset(Cursor cursor) {
+    protected Asset cursorToAsset(Cursor cursor) {
         Asset asset = new Asset();
         asset.setAssetId(cursor.getLong(0));
         asset.setAssetNumber(cursor.getString(1));
@@ -146,9 +146,11 @@ public class AssetDAO {
                     " = ? "
                     , new String[]{ assetnumber});
                 cursor.moveToFirst();
-                    Integer assetid = cursor.getColumnIndex("assets_id");
+                    Integer assetid = cursor.getInt(0);
                 cursor.close();
             return assetid;
 
     }
+
+
 }
