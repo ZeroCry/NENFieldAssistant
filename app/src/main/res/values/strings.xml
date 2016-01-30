@@ -12,6 +12,15 @@
 
 <!-- Login -->
     <string name="g_login">G+ Login</string>
+    <string name="signed_in_fmt">Signed in fmt</string>
+    <string name="server_client_id">Server Client ID</string>
+    <string name="auth_code_fmt">Auth Code Fmt</string>
+    <string name="signed_in">Signed In</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+
+
 
     <string name="btn_logout_from_google">Logout from Google</string>
     <string name="btn_revoke_access">Revoke Access</string>
