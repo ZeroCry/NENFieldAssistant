@@ -11,7 +11,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import nicknestor.nenfieldassistant.model.Location;
 import nicknestor.nenfieldassistant.model.Area;
 
 public class AreasDAO {
@@ -24,8 +23,8 @@ public class AreasDAO {
     private SQLiteDatabase mDatabase;
     private DatabaseHandler mDbHelper;
     private String[] mAllColumns = {
-            DatabaseHandler.CLASS_AREAS.Areas_id,
-            DatabaseHandler.CLASS_AREAS.Areas_area
+            DatabaseHandler.AREAS.Areas_id,
+            DatabaseHandler.AREAS.Areas_area
     };
 
     public AreasDAO(Context context) {
@@ -50,11 +49,11 @@ public class AreasDAO {
 
     public Area createArea(String area) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseHandler.CLASS_AREAS.Areas_area, area);
+        values.put(DatabaseHandler.AREAS.Areas_area, area);
         long insertId = mDatabase
-                .insert(DatabaseHandler.CLASS_AREAS.Table_Areas, null, values);
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_AREAS.Table_Areas, mAllColumns,
-                DatabaseHandler.CLASS_AREAS.Areas_area + " = " + insertId, null, null,
+                .insert(DatabaseHandler.AREAS.Table_Areas, null, values);
+        Cursor cursor = mDatabase.query(DatabaseHandler.AREAS.Table_Areas, mAllColumns,
+                DatabaseHandler.AREAS.Areas_area + " = " + insertId, null, null,
                 null, null);
         cursor.moveToFirst();
         Area newArea = cursorToArea(cursor);
@@ -65,14 +64,14 @@ public class AreasDAO {
     public void deleteArea(Area area) {
         long id = area.getAreaId();
         System.out.println("the deleted employee has the id: " + id);
-        mDatabase.delete(DatabaseHandler.CLASS_AREAS.Table_Areas, DatabaseHandler.CLASS_AREAS.Areas_id
+        mDatabase.delete(DatabaseHandler.AREAS.Table_Areas, DatabaseHandler.AREAS.Areas_id
                 + " = " + id, null);
     }
 
     public List<Area> getAllAreas() {
         List<Area> listAreas = new ArrayList<Area>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_AREAS.Table_Areas, mAllColumns,
+        Cursor cursor = mDatabase.query(DatabaseHandler.AREAS.Table_Areas, mAllColumns,
                 null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -89,8 +88,8 @@ public class AreasDAO {
     public List<Area> getAreasOfLocation(long location_id) {
         List<Area> listAreas = new ArrayList<Area>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_AREAS.Table_Areas, mAllColumns,
-                DatabaseHandler.CLASS_AREAS.Areas_id + " = ?",
+        Cursor cursor = mDatabase.query(DatabaseHandler.AREAS.Table_Areas, mAllColumns,
+                DatabaseHandler.AREAS.Areas_id + " = ?",
                 new String[] { String.valueOf(location_id) }, null, null, null);
 
         cursor.moveToFirst();

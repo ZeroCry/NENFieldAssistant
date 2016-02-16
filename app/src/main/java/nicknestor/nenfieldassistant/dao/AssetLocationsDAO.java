@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import nicknestor.nenfieldassistant.model.AssetLocation;
-import nicknestor.nenfieldassistant.model.Location;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AssetLocationsDAO {
 
@@ -23,13 +19,13 @@ public class AssetLocationsDAO {
     private SQLiteDatabase mDatabase;
     private DatabaseHandler mDatabaseHandler;
     private String[] mAllColumns = {
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id,
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset,
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location,
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_area,
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_timestamp,
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_notes,
-            DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_user,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_id,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_id_asset,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_id_location,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_id_area,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_timestamp,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_notes,
+            DatabaseHandler.ASSETLOCATION.AssetLocation_user,
     };
 
     public AssetLocationsDAO(Context context) {
@@ -54,16 +50,16 @@ public class AssetLocationsDAO {
 
     public AssetLocation createAssetLocation(Integer asset_id, Long location_id, Long areas_id, String timestamp, String notes, String user) {
         ContentValues valuesAssetLocation = new ContentValues();
-        valuesAssetLocation.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset, asset_id);
-        valuesAssetLocation.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location, location_id);
-        valuesAssetLocation.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_area, areas_id);
-        valuesAssetLocation.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_timestamp, timestamp);
-        valuesAssetLocation.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_notes, notes);
-        valuesAssetLocation.put(DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_user, user);
+        valuesAssetLocation.put(DatabaseHandler.ASSETLOCATION.AssetLocation_id_asset, asset_id);
+        valuesAssetLocation.put(DatabaseHandler.ASSETLOCATION.AssetLocation_id_location, location_id);
+        valuesAssetLocation.put(DatabaseHandler.ASSETLOCATION.AssetLocation_id_area, areas_id);
+        valuesAssetLocation.put(DatabaseHandler.ASSETLOCATION.AssetLocation_timestamp, timestamp);
+        valuesAssetLocation.put(DatabaseHandler.ASSETLOCATION.AssetLocation_notes, notes);
+        valuesAssetLocation.put(DatabaseHandler.ASSETLOCATION.AssetLocation_user, user);
         Long insertAssetLocationId = mDatabase
-                .insert(DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation, null, valuesAssetLocation);
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation, mAllColumns,
-                DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id + " = " + insertAssetLocationId, null,null,null,null);
+                .insert(DatabaseHandler.ASSETLOCATION.Table_AssetLocation, null, valuesAssetLocation);
+        Cursor cursor = mDatabase.query(DatabaseHandler.ASSETLOCATION.Table_AssetLocation, mAllColumns,
+                DatabaseHandler.ASSETLOCATION.AssetLocation_id + " = " + insertAssetLocationId, null,null,null,null);
         cursor.moveToFirst();
         AssetLocation newAssetLocation = cursorToAssetLocation(cursor);
         cursor.close();

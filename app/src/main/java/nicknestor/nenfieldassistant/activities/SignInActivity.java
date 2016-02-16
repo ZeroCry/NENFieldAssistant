@@ -69,7 +69,7 @@ public class SignInActivity extends AppCompatActivity implements
 
         // Build GoogleAPIClient with the Google Sign-In API and the above options.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+//                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
     }
@@ -182,5 +182,17 @@ public class SignInActivity extends AppCompatActivity implements
                 revokeAccess();
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
     }
 }

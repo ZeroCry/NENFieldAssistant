@@ -6,15 +6,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import nicknestor.nenfieldassistant.dao.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.database.sqlite.SQLiteQueryBuilder;
 
 import nicknestor.nenfieldassistant.model.Asset;
-import nicknestor.nenfieldassistant.model.AssetLocation;
-import nicknestor.nenfieldassistant.model.Location;
 
 
 public class AssetDAO {
@@ -27,10 +23,10 @@ public class AssetDAO {
     private SQLiteDatabase mDatabase;
     private DatabaseHandler mDatabaseHandler;
     private String[] mAllColumns = {
-            DatabaseHandler.CLASS_ASSETS.Assets_id,
-            DatabaseHandler.CLASS_ASSETS.Assets_assetnumber,
-            DatabaseHandler.CLASS_ASSETS.Assets_category,
-            DatabaseHandler.CLASS_ASSETS.Assets_machinetype,
+            DatabaseHandler.ASSETS.Assets_id,
+            DatabaseHandler.ASSETS.Assets_assetnumber,
+            DatabaseHandler.ASSETS.Assets_category,
+            DatabaseHandler.ASSETS.Assets_machinetype,
     };
 
     public AssetDAO(Context context) {
@@ -55,13 +51,13 @@ public class AssetDAO {
 
     public Asset createAsset(String assetnumber, Integer category, Integer machinetype) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseHandler.CLASS_ASSETS.Assets_assetnumber, assetnumber);
-        values.put(DatabaseHandler.CLASS_ASSETS.Assets_category, category);
-        values.put(DatabaseHandler.CLASS_ASSETS.Assets_machinetype, machinetype);
+        values.put(DatabaseHandler.ASSETS.Assets_assetnumber, assetnumber);
+        values.put(DatabaseHandler.ASSETS.Assets_category, category);
+        values.put(DatabaseHandler.ASSETS.Assets_machinetype, machinetype);
         Long insertAssetId = mDatabase
-                .insert(DatabaseHandler.CLASS_ASSETS.Table_Assets, null, values);
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
-                DatabaseHandler.CLASS_ASSETS.Assets_id + " = " + insertAssetId, null,null,null,null);
+                .insert(DatabaseHandler.ASSETS.Table_Assets, null, values);
+        Cursor cursor = mDatabase.query(DatabaseHandler.ASSETS.Table_Assets, mAllColumns,
+                DatabaseHandler.ASSETS.Assets_id + " = " + insertAssetId, null,null,null,null);
         cursor.moveToFirst();
         Asset newAsset = cursorToAsset(cursor);
         cursor.close();
@@ -71,14 +67,14 @@ public class AssetDAO {
     public void deleteAsset(Asset asset) {
         Long asset_id = asset.getAssetId();
         System.out.println("the deleted asset has the id: " + asset_id);
-        mDatabase.delete(DatabaseHandler.CLASS_ASSETS.Table_Assets, DatabaseHandler.CLASS_ASSETS.Assets_id
+        mDatabase.delete(DatabaseHandler.ASSETS.Table_Assets, DatabaseHandler.ASSETS.Assets_id
                 + " = " + asset_id, null);
     }
 
     public List<Asset> getAllAssets() {
         List<Asset> listAssets = new ArrayList<Asset>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_ASSETS.Table_Assets, mAllColumns,
+        Cursor cursor = mDatabase.query(DatabaseHandler.ASSETS.Table_Assets, mAllColumns,
                 null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -96,15 +92,15 @@ public class AssetDAO {
     public List<Asset> getAssetsOfLocation(long locationId) {
         List<Asset> listassets = new ArrayList<Asset>();
 
-        String querydata = "SELECT * FROM " + DatabaseHandler.CLASS_ASSETS.Table_Assets +
+        String querydata = "SELECT * FROM " + DatabaseHandler.ASSETS.Table_Assets +
                 " INNER JOIN " +
-                DatabaseHandler.CLASS_ASSETLOCATION.Table_AssetLocation +
+                DatabaseHandler.ASSETLOCATION.Table_AssetLocation +
                 " ON " +
-                DatabaseHandler.CLASS_ASSETS.Assets_id +
+                DatabaseHandler.ASSETS.Assets_id +
                 " = " +
-                DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_asset +
+                DatabaseHandler.ASSETLOCATION.AssetLocation_id_asset +
                 " WHERE " +
-                DatabaseHandler.CLASS_ASSETLOCATION.AssetLocation_id_location +
+                DatabaseHandler.ASSETLOCATION.AssetLocation_id_location +
                 " = ?";
 
         Cursor cursor = mDatabase.rawQuery(querydata, new String[] {Long.toString(locationId)} );
@@ -138,13 +134,13 @@ public class AssetDAO {
     public Integer getIDofAsset(String assetnumber) {
             Cursor cursor = mDatabase.rawQuery(
                     "SELECT " +
-                    DatabaseHandler.CLASS_ASSETS.Assets_id +
-                    " FROM " +
-                    DatabaseHandler.CLASS_ASSETS.Table_Assets +
-                    " WHERE " +
-                    DatabaseHandler.CLASS_ASSETS.Assets_assetnumber +
-                    " = ? "
-                    , new String[]{ assetnumber});
+                            DatabaseHandler.ASSETS.Assets_id +
+                            " FROM " +
+                            DatabaseHandler.ASSETS.Table_Assets +
+                            " WHERE " +
+                            DatabaseHandler.ASSETS.Assets_assetnumber +
+                            " = ? "
+                    , new String[]{assetnumber});
                 cursor.moveToFirst();
                     Integer assetid = cursor.getInt(0);
                 cursor.close();

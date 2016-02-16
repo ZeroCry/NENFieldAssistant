@@ -1,9 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/txt_assetnumber"
@@ -16,31 +17,9 @@
         android:textColor="@android:color/black" />
 
     <Spinner
-        android:id="@+id/spinner_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/txt_assetnumber"
-        android:prompt="@string/select_a_category"
-        android:animateLayoutChanges="true"
-        android:textColor="@android:color/black"
-        android:spinnerMode="dropdown"/>
-
-    <Spinner
-        android:id="@+id/spinner_machinetype"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_category"
-        android:layout_marginTop="8dp"
-        android:prompt="@string/machinetype"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/black" />
-
-    <Spinner
         android:id="@+id/spinner_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_machinetype"
         android:layout_marginTop="8dp"
         android:prompt="@string/select_a_location"
         android:animateLayoutChanges="true"
@@ -50,15 +29,125 @@
         android:id="@+id/spinner_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_location"
         android:layout_marginTop="8dp"
         android:prompt="@string/select_an_area"
         android:animateLayoutChanges="true"
         android:spinnerMode="dropdown" />
 
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/select_a_category"
+        android:animateLayoutChanges="true"
+        android:textColor="@android:color/black"
+        android:spinnerMode="dropdown"/>
+
+
+
+    <!-- Cranes -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/crane">
+    <Spinner
+        android:id="@+id/spinner_cranetype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/machinetype"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
+
+    <Spinner
+        android:id="@+id/spinner_fill_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/machinetype"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
+
+    <Spinner
+        android:id="@+id/spinner_claw_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/machinetype"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/txt_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/txt_clings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+    </LinearLayout>
+
+
+    <!-- Bulk -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/bulk">
+    <Spinner
+        android:id="@+id/spinner_bulktype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/machinetype"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/txt_bulk_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+    </LinearLayout>
+
+
+    <!-- Rides and Videos -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ridevideo">
+    <Spinner
+        android:id="@+id/spinner_ride_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/machinetype"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/txt_ride_video_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/txt_ride_video_rowprice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+    </LinearLayout>
+
+
+    <!-- generic -->
     <EditText
         android:id="@+id/txt_notes"
-        android:layout_below="@+id/spinner_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -71,7 +160,6 @@
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_notes"
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:paddingBottom="2dp"
@@ -81,4 +169,4 @@
         android:text="@string/add"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</RelativeLayout>
+</LinearLayout>

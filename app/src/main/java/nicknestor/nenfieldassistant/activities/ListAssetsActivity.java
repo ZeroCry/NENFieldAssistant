@@ -113,7 +113,7 @@ public class ListAssetsActivity extends Activity implements OnItemLongClickListe
 
                 if(mAssetDao == null)
                     this.mAssetDao = new AssetDAO(this);
-//TODO Join goes here?   Left join CLASS_ASSETS.Table_Assets to CLASS_ASSETLOCATION.Table_AssetLocation
+//TODO Join goes here?   Left join ASSETS.Table_Assets to ASSETLOCATION.Table_AssetLocation
                 this.mListAssets = mAssetDao.getAssetsOfLocation(mLocationId);
                 if(mAdapter == null) {
                     this.mAdapter = new ListAssetsAdapter(this, mListAssets);

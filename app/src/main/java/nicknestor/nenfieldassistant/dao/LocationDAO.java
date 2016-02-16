@@ -11,7 +11,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import nicknestor.nenfieldassistant.model.Location;
-import nicknestor.nenfieldassistant.model.Asset;
 
 
 public class LocationDAO {
@@ -21,15 +20,15 @@ public class LocationDAO {
     private DatabaseHandler mDatabaseHandler;
     private Context mContext;
     private String[] mAllColumns = {
-            DatabaseHandler.CLASS_LOCATIONS.Locations_id,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_store,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_abbr,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_storeNumber,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_address,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_city,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_state,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_zip,
-            DatabaseHandler.CLASS_LOCATIONS.Locations_phone};
+            DatabaseHandler.LOCATIONS.Locations_id,
+            DatabaseHandler.LOCATIONS.Locations_store,
+            DatabaseHandler.LOCATIONS.Locations_abbr,
+            DatabaseHandler.LOCATIONS.Locations_storeNumber,
+            DatabaseHandler.LOCATIONS.Locations_address,
+            DatabaseHandler.LOCATIONS.Locations_city,
+            DatabaseHandler.LOCATIONS.Locations_state,
+            DatabaseHandler.LOCATIONS.Locations_zip,
+            DatabaseHandler.LOCATIONS.Locations_phone};
 
     public LocationDAO(Context context) {
         this.mContext = context;
@@ -52,18 +51,18 @@ public class LocationDAO {
 
     public Location createLocation(String store, String abbr, String storenumber, String address, String city, String state, String zip, String phone) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_store, store);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_abbr, abbr);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_storeNumber, storenumber);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_address, address);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_city, city);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_state, state);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_zip, zip);
-        values.put(DatabaseHandler.CLASS_LOCATIONS.Locations_phone, phone);
+        values.put(DatabaseHandler.LOCATIONS.Locations_store, store);
+        values.put(DatabaseHandler.LOCATIONS.Locations_abbr, abbr);
+        values.put(DatabaseHandler.LOCATIONS.Locations_storeNumber, storenumber);
+        values.put(DatabaseHandler.LOCATIONS.Locations_address, address);
+        values.put(DatabaseHandler.LOCATIONS.Locations_city, city);
+        values.put(DatabaseHandler.LOCATIONS.Locations_state, state);
+        values.put(DatabaseHandler.LOCATIONS.Locations_zip, zip);
+        values.put(DatabaseHandler.LOCATIONS.Locations_phone, phone);
         Long insertLocationId = mDatabase
-                .insert(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, null, values);
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
-                DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = " + insertLocationId, null, null, null, null);
+                .insert(DatabaseHandler.LOCATIONS.Table_Locations, null, values);
+        Cursor cursor = mDatabase.query(DatabaseHandler.LOCATIONS.Table_Locations, mAllColumns,
+                DatabaseHandler.LOCATIONS.Locations_id + " = " + insertLocationId, null, null, null, null);
         cursor.moveToFirst();
         Location newLocation = cursorToLocation(cursor);
         cursor.close();
@@ -82,7 +81,7 @@ public class LocationDAO {
         }
 
         System.out.println("the deleted location has the id: " + location_id);
-        mDatabase.delete(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, DatabaseHandler.CLASS_LOCATIONS.Locations_id
+        mDatabase.delete(DatabaseHandler.LOCATIONS.Table_Locations, DatabaseHandler.LOCATIONS.Locations_id
                 + " = " + location_id, null);
     }
 */
@@ -90,8 +89,8 @@ public class LocationDAO {
 
 /*    public void editLocation(Location Location) {
         Long location_id = Location.getId();
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
-        DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = " + insertId, null, null,
+        Cursor cursor = mDatabase.query(DatabaseHandler.LOCATIONS.Table_Locations, mAllColumns,
+        DatabaseHandler.LOCATIONS.Locations_id + " = " + insertId, null, null,
             null, null);
         cursor.moveToFirst();
         Location newLocation = cursorToLocation(cursor);
@@ -105,7 +104,7 @@ public class LocationDAO {
     public List<Location> getAllLocations() {
         List<Location> listLocations = new ArrayList<Location>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
+        Cursor cursor = mDatabase.query(DatabaseHandler.LOCATIONS.Table_Locations, mAllColumns,
                 null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -123,7 +122,7 @@ public class LocationDAO {
     public List<Location> getAllLocations() {
         List<Location> listLocations = new ArrayList<Location>();
 
-        Cursor cursor = ianap.SimpleQuery(DatabaseHandler.CLASS_LOCATIONS.Table_Locations);
+        Cursor cursor = ianap.SimpleQuery(DatabaseHandler.LOCATIONS.Table_Locations);
         if (cursor != null) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
@@ -138,8 +137,8 @@ public class LocationDAO {
 */
 
     public Location getLocationById(long id) {
-        Cursor cursor = mDatabase.query(DatabaseHandler.CLASS_LOCATIONS.Table_Locations, mAllColumns,
-                DatabaseHandler.CLASS_LOCATIONS.Locations_id + " = ?",
+        Cursor cursor = mDatabase.query(DatabaseHandler.LOCATIONS.Table_Locations, mAllColumns,
+                DatabaseHandler.LOCATIONS.Locations_id + " = ?",
                 new String[] { String.valueOf(id) }, null,null,null);
         if (cursor != null) {
             cursor.moveToFirst();
