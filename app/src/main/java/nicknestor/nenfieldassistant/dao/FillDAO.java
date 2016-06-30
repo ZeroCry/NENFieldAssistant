@@ -23,8 +23,8 @@ public class FillDAO {
     private SQLiteDatabase mDatabase;
     private DatabaseHandler mDbHelper;
     private String[] mAllColumns = {
-            DatabaseHandler.FILLS.Fills_id,
-            DatabaseHandler.FILLS.Fills_fill
+            DatabaseHandler.CRANEFILL.CraneFill_id,
+            DatabaseHandler.CRANEFILL.CraneFill_name
     };
 
     public FillDAO(Context context) {
@@ -49,11 +49,11 @@ public class FillDAO {
 
     public Fill createFill(String fill) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseHandler.FILLS.Fills_fill, fill);
+        values.put(DatabaseHandler.CRANEFILL.CraneFill_name, fill);
         long insertId = mDatabase
-                .insert(DatabaseHandler.FILLS.Table_Fills, null, values);
-        Cursor cursor = mDatabase.query(DatabaseHandler.FILLS.Table_Fills, mAllColumns,
-                DatabaseHandler.FILLS.Fills_fill + " = " + insertId, null, null,
+                .insert(DatabaseHandler.CRANEFILL.Table_CraneFill, null, values);
+        Cursor cursor = mDatabase.query(DatabaseHandler.CRANEFILL.Table_CraneFill, mAllColumns,
+                DatabaseHandler.CRANEFILL.CraneFill_name + " = " + insertId, null, null,
                 null, null);
         cursor.moveToFirst();
         Fill newFill = cursorToFill(cursor);
@@ -64,14 +64,14 @@ public class FillDAO {
     public void deleteFill(Fill fill) {
         long id = fill.getFillId();
         System.out.println("the deleted Fill has the id: " + id);
-        mDatabase.delete(DatabaseHandler.FILLS.Table_Fills, DatabaseHandler.FILLS.Fills_id
+        mDatabase.delete(DatabaseHandler.CRANEFILL.Table_CraneFill, DatabaseHandler.CRANEFILL.CraneFill_id
                 + " = " + id, null);
     }
 
     public List<Fill> getAllFills() {
         List<Fill> listFills = new ArrayList<Fill>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.FILLS.Table_Fills, mAllColumns,
+        Cursor cursor = mDatabase.query(DatabaseHandler.CRANEFILL.Table_CraneFill, mAllColumns,
                 null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -88,8 +88,8 @@ public class FillDAO {
     public List<Fill> getFillByCategory(long Category_id) {
         List<Fill> listFills = new ArrayList<Fill>();
 
-        Cursor cursor = mDatabase.query(DatabaseHandler.FILLS.Table_Fills, mAllColumns,
-                DatabaseHandler.FILLS.Fills_id + " = ?",
+        Cursor cursor = mDatabase.query(DatabaseHandler.CRANEFILL.Table_CraneFill, mAllColumns,
+                DatabaseHandler.CRANEFILL.CraneFill_id + " = ?",
                 new String[] { String.valueOf(Category_id) }, null, null, null);
 
         cursor.moveToFirst();

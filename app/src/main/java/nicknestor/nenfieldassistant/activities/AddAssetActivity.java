@@ -167,13 +167,13 @@ public class AddAssetActivity extends Activity implements OnClickListener, OnIte
         bulktypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerBulkType.setAdapter(bulktypeAdapter);
 
-        ArrayAdapter<String> ridetypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_ride_types);
-        ridetypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinnerRidetype.setAdapter(ridetypeAdapter);
+//        ArrayAdapter<String> ridetypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_ride_types);
+//        ridetypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpinnerRidetype.setAdapter(ridetypeAdapter);
 
-        ArrayAdapter<String> videotypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_video_types);
-        videotypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinnerVideotype.setAdapter(videotypeAdapter);
+//        ArrayAdapter<String> videotypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_video_types);
+//        videotypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpinnerVideotype.setAdapter(videotypeAdapter);
 
         ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_areas);
         areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

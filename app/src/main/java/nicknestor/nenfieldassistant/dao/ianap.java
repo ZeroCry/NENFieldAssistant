@@ -4,9 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-/**
- * Created by Nick on 1/28/2016.
- */
+
 public class ianap {
     private static SQLiteDatabase mDatabase;
 

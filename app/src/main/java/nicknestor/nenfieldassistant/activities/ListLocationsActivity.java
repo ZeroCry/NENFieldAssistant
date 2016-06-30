@@ -3,12 +3,18 @@ package nicknestor.nenfieldassistant.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -26,7 +32,8 @@ import nicknestor.nenfieldassistant.model.Location;
 
 
 
-public class ListLocationsActivity extends Activity implements OnItemLongClickListener, OnItemClickListener, OnClickListener {
+public class ListLocationsActivity extends NavigationDrawer implements AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener
+        {
 
     private static final String TAG = "ListLocationsActivity";
 
@@ -43,8 +50,35 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+//Menu Stuff
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_locations);
+        setContentView(R.layout.activity_listlocations);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_listlocations);
+        setSupportActionBar(toolbar);
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_listlocations);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListLocationsActivity.this, AddLocationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+
+//normal stuff
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_list_locations);
 
         // initialize views
         initViews();
@@ -68,10 +102,10 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
         this.mBtnAddLocation = (ImageButton) findViewById(R.id.btn_add_location);
         this.mListviewLocations.setOnItemClickListener(this);
         this.mListviewLocations.setOnItemLongClickListener(this);
-        this.mBtnAddLocation.setOnClickListener(this);
+        //this.mBtnAddLocation.setOnClickListener(this);
     }
 
-    @Override
+/*    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add_location:
@@ -83,6 +117,7 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
                 break;
         }
     }
+*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -127,8 +162,9 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long Location_id) {
         Location clickedLocation = mAdapter.getItem(position);
         Log.d(TAG, "clickedItem : " + clickedLocation.getStore() + ", " + clickedLocation.getLocationId());
-        Intent intent = new Intent(this, ListAssetsActivity.class);
-        intent.putExtra(ListAssetsActivity.EXTRA_SELECTED_LOCATION_ID, clickedLocation.getLocationId());
+//ListLocationsActivity
+        Intent intent = new Intent(ListLocationsActivity.this, ListBulkActivity.class);
+        intent.putExtra(ListBulkActivity.EXTRA_SELECTED_LOCATION_ID, clickedLocation.getLocationId());
         startActivity(intent);
     }
 
@@ -192,6 +228,29 @@ public class ListLocationsActivity extends Activity implements OnItemLongClickLi
         AlertDialog alertDialog = alertDialogBuilder.create();
         // show alert
         alertDialog.show();
+    }
+
+//More Menu Stuff
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

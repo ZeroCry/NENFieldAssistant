@@ -1,71 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nicknestor.nenfieldassistant">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
     <meta-data
         android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version"/>
+        android:value="@integer/google_play_services_version" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="nicknestor.nenfieldassistant.activities.SignInActivity"
+            android:name=".activities.SignInActivity2"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity
-            android:name="nicknestor.nenfieldassistant.activities.SetupCategoriesActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
+            android:screenOrientation="portrait">
 
-        <activity
-            android:name="nicknestor.nenfieldassistant.activities.ListLocationsActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity
-            android:name="nicknestor.nenfieldassistant.activities.AddLocationActivity"
+            android:name=".activities.ListLocationsActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.AddLocationActivity"
             android:label="@string/add_new_location"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
-            android:name="nicknestor.nenfieldassistant.activities.AddAssetActivity"
+            android:name=".activities.AddAssetActivity"
             android:label="@string/add_new_asset"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
-            android:name="nicknestor.nenfieldassistant.activities.ListAssetsActivity"
+            android:name=".activities.ListAssetsActivity"
             android:label="@string/all_assets"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <!--
+             ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!--        <activity
+        <!--
+                    <activity
                     android:name="nicknestor.nenfieldassistant.activities.AddAreaActivity"
                     android:label="@string/add_new_area"
                     android:screenOrientation="portrait"
@@ -77,8 +76,16 @@
                     android:theme="@android:style/Theme.Light.NoTitleBar" />
         -->
 
+        <activity
+            android:name=".activities.ListBulkActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
     </application>
 
 </manifest>
