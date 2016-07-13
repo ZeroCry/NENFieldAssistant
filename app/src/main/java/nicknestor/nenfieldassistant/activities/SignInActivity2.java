@@ -19,6 +19,7 @@ package nicknestor.nenfieldassistant.activities;
         import com.google.android.gms.common.api.ResultCallback;
         import com.google.android.gms.common.api.Status;
 
+        import android.support.annotation.NonNull;
         import nicknestor.nenfieldassistant.R;
 
 /**
@@ -30,11 +31,14 @@ public class SignInActivity2 extends AppCompatActivity implements
         View.OnClickListener {
 
     private static final String TAG = "SignInActivity";
-    private static final int RC_SIGN_IN = 9001;
+    private static final int RC_SIGN_IN = 65165;
 
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
-    private ProgressDialog mProgressDialog;
+
+    // A progress dialog to display when the user is connecting in
+    // case there is a delay in any of the dialogs being ready.
+    private ProgressDialog mConnectionProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +82,9 @@ public class SignInActivity2 extends AppCompatActivity implements
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setScopes(gso.getScopeArray());
         // [END customize_button]
+
+        mConnectionProgressDialog = new ProgressDialog(this);
+        mConnectionProgressDialog.setMessage("Signing in...");
     }
 
     @Override
@@ -95,11 +102,14 @@ public class SignInActivity2 extends AppCompatActivity implements
             // If the user has not previously signed in on this device or the sign-in has expired,
             // this asynchronous branch will attempt to sign in the user silently.  Cross-device
             // single sign-on will occur in this branch.
-            showProgressDialog();
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Checking sign in state...");
+            Log.d(TAG, "Checking sign in state...");
+            progressDialog.show();
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
-                public void onResult(GoogleSignInResult googleSignInResult) {
-                    hideProgressDialog();
+                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
+                    progressDialog.dismiss();
                     handleSignInResult(googleSignInResult);
                 }
             });
@@ -111,8 +121,11 @@ public class SignInActivity2 extends AppCompatActivity implements
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d(TAG, "onActivityResult, resultCode:" + resultCode);
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
+            mConnectionProgressDialog.dismiss();
+
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
@@ -125,7 +138,7 @@ public class SignInActivity2 extends AppCompatActivity implements
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+            mStatusTextView.setText(acct.getDisplayName());
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
@@ -176,24 +189,9 @@ public class SignInActivity2 extends AppCompatActivity implements
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
 
-    private void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage(getString(R.string.loading));
-            mProgressDialog.setIndeterminate(true);
-        }
-
-        mProgressDialog.show();
-    }
-
-    private void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.hide();
-        }
-    }
-
     private void updateUI(boolean signedIn) {
         if (signedIn) {
+            mStatusTextView.setText("Signed In");
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
@@ -208,6 +206,8 @@ public class SignInActivity2 extends AppCompatActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
+                mConnectionProgressDialog.show();
+
                 signIn();
                 break;
             case R.id.sign_out_button:
