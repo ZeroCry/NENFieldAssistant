@@ -1,6 +1,5 @@
 package nicknestor.nenfieldassistant.activities;
 
-        import android.app.ProgressDialog;
         import android.content.Intent;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
@@ -16,7 +15,6 @@ package nicknestor.nenfieldassistant.activities;
         import com.google.android.gms.common.ConnectionResult;
         import com.google.android.gms.common.SignInButton;
         import com.google.android.gms.common.api.GoogleApiClient;
-        import com.google.android.gms.common.api.OptionalPendingResult;
         import com.google.android.gms.common.api.ResultCallback;
         import com.google.android.gms.common.api.Status;
         import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,10 +43,6 @@ public class SignInActivity2 extends AppCompatActivity implements
     private TextView mStatusTextView;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-    // A progress dialog to display when the user is connecting in
-    // case there is a delay in any of the dialogs being ready.
-    private ProgressDialog mConnectionProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +107,6 @@ public class SignInActivity2 extends AppCompatActivity implements
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setScopes(gso.getScopeArray());
         // [END customize_button]
-
-        mConnectionProgressDialog = new ProgressDialog(this);
-        mConnectionProgressDialog.setMessage("Signing in...");
     }
 
     @Override
@@ -164,7 +155,6 @@ public class SignInActivity2 extends AppCompatActivity implements
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        mConnectionProgressDialog.hide();
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
 
                         // If sign in fails, display a message to the user. If sign in succeeds
@@ -183,7 +173,6 @@ public class SignInActivity2 extends AppCompatActivity implements
 
     // [START signIn]
     private void signIn() {
-        mConnectionProgressDialog.show();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
