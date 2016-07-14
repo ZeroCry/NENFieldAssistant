@@ -19,43 +19,51 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <!-- Sign In Activity -->
         <activity
             android:name=".activities.SignInActivity2"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
+
+        <!-- List Location Activity -->
         <activity
             android:name=".activities.ListLocationsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
+            <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
         </activity>
+
+        <!-- Add Location Activity -->
         <activity
             android:name=".activities.AddLocationActivity"
             android:label="@string/add_new_location"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+        <!-- Add Asset Activity -->
         <activity
             android:name=".activities.AddAssetActivity"
             android:label="@string/add_new_asset"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+        <!-- List Assets Activity -->
         <activity
             android:name=".activities.ListAssetsActivity"
             android:label="@string/all_assets"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -63,6 +71,8 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+
         <!--
                     <activity
                     android:name="nicknestor.nenfieldassistant.activities.AddAreaActivity"
@@ -76,6 +86,7 @@
                     android:theme="@android:style/Theme.Light.NoTitleBar" />
         -->
 
+        <!-- List Bulk Activity -->
         <activity
             android:name=".activities.ListBulkActivity"
             android:label="@string/title_activity_main"
